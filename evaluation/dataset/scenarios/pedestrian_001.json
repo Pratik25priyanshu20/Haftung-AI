@@ -1,0 +1,56 @@
+{
+  "scenario_id": "pedestrian_001",
+  "category": "pedestrian",
+  "scenario_text": "Am 10. Januar 2024 gegen 17:45 Uhr wurde ein Fußgänger auf einem Zebrastreifen in der Kaiserstraße angefahren. Fahrzeug A (Volkswagen Tiguan) näherte sich dem Fußgängerüberweg und bremste nicht, obwohl der Fußgänger bereits die Fahrbahn betreten hatte. Der Fahrer gab an, den Fußgänger wegen der Dunkelheit und des Regens nicht gesehen zu haben. Der Fußgänger trug dunkle Kleidung. Er wurde mit einer Beinverletzung ins Krankenhaus eingeliefert.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "rain",
+    "time_of_day": "evening",
+    "road_type": "innerorts",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Nichtbeachtung des Fußgängerüberwegs",
+    "primary_cause_taxonomy_id": "pedestrian_crossing",
+    "accident_type": "pedestrian",
+    "contributing_factors": [
+      {
+        "factor": "Missachtung des Zebrastreifens",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Schlechte Sichtverhältnisse",
+        "category": "environmental",
+        "severity": "secondary"
+      },
+      {
+        "factor": "Dunkle Kleidung des Fußgängers",
+        "category": "environmental",
+        "severity": "minor"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 85
+      },
+      {
+        "party": "Fußgänger",
+        "percentage": 15
+      }
+    ],
+    "relevant_stvo": [
+      "§26 StVO"
+    ],
+    "expected_claims": [
+      "Der Fußgänger befand sich auf dem Zebrastreifen.",
+      "Der Fahrer bremste nicht vor dem Fußgängerüberweg.",
+      "Die Sichtverhältnisse waren durch Dunkelheit und Regen eingeschränkt."
+    ],
+    "legal_references": [
+      "§26 StVO",
+      "§3 Abs. 1 StVO"
+    ]
+  }
+}

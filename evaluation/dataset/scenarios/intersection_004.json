@@ -1,0 +1,50 @@
+{
+  "scenario_id": "intersection_004",
+  "category": "intersection",
+  "scenario_text": "Am 13. Juni 2024 gegen 12:00 Uhr kam es an einer unbeschilderten Kreuzung in einem Wohngebiet zu einem Unfall. Fahrzeug A (Renault Twingo) kam von links, Fahrzeug B (VW Up) von rechts. Der Fahrer von A beachtete die Rechts-vor-Links-Regel nicht und fuhr in die Kreuzung ein. Es kam zur Kollision. Der Fahrer von A gab an, abgelenkt gewesen zu sein und die Kreuzung nicht bemerkt zu haben.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "midday",
+    "road_type": "innerorts",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Missachtung der Rechts-vor-Links-Regel durch Ablenkung",
+    "primary_cause_taxonomy_id": "distraction",
+    "accident_type": "intersection",
+    "contributing_factors": [
+      {
+        "factor": "Ablenkung des Fahrers",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Missachtung Rechts-vor-Links",
+        "category": "human_error",
+        "severity": "primary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§8 StVO"
+    ],
+    "expected_claims": [
+      "Der Fahrer von A beachtete die Rechts-vor-Links-Regel nicht.",
+      "Die Kreuzung war unbeschildert.",
+      "Der Fahrer war abgelenkt."
+    ],
+    "legal_references": [
+      "§8 Abs. 1 StVO"
+    ]
+  }
+}

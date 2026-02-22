@@ -1,0 +1,52 @@
+{
+  "scenario_id": "pedestrian_005",
+  "category": "pedestrian",
+  "scenario_text": "Am 5. Dezember 2024 gegen 16:30 Uhr kam es in einer verkehrsberuhigten Zone (Spielstraße) zu einem Unfall. Ein Jogger (Beteiligter B) lief auf der Fahrbahn. Fahrzeug A (Range Rover) fuhr mit ca. 25 km/h, obwohl in der Spielstraße nur Schrittgeschwindigkeit (max. 7 km/h) erlaubt ist. Der Jogger wurde von hinten erfasst und stürzte. Er erlitt Schürfwunden und Prellungen.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "afternoon",
+    "road_type": "innerorts",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Überhöhte Geschwindigkeit in verkehrsberuhigter Zone",
+    "primary_cause_taxonomy_id": "right_of_way",
+    "accident_type": "pedestrian",
+    "contributing_factors": [
+      {
+        "factor": "Deutlich überhöhte Geschwindigkeit in Spielstraße",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Fußgänger auf Fahrbahn (erlaubt in Spielstraße)",
+        "category": "traffic",
+        "severity": "minor"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 90
+      },
+      {
+        "party": "Jogger B",
+        "percentage": 10
+      }
+    ],
+    "relevant_stvo": [
+      "§42 StVO",
+      "§3 StVO"
+    ],
+    "expected_claims": [
+      "In der Spielstraße gilt Schrittgeschwindigkeit.",
+      "Das Fahrzeug fuhr mit ca. 25 km/h statt max. 7 km/h.",
+      "In verkehrsberuhigten Zonen haben Fußgänger Vorrang."
+    ],
+    "legal_references": [
+      "§42 Abs. 4a StVO",
+      "§3 StVO"
+    ]
+  }
+}

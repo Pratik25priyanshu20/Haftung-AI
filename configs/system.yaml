@@ -1,0 +1,64 @@
+# Haftung_AI Master Configuration
+
+app:
+  name: "Haftung_AI"
+  env: "dev"
+  log_level: "INFO"
+
+llm:
+  provider: "groq"
+  model: "llama-3.3-70b-versatile"
+  temperature: 0.1
+  max_tokens: 4096
+  max_retries: 3
+  rate_limit_rpm: 30
+
+perception:
+  detector_model: "yolov8n"
+  confidence_threshold: 0.25
+  tracker_type: "deepsort"  # "deepsort" or "bytetrack"
+  kalman:
+    enabled: true
+    process_noise: 0.5
+    measurement_noise: 1.0
+    dt: 0.033
+    rts_smoother: true  # Enable backward pass for post-hoc analysis
+  temporal:
+    horizons_s: [0.5, 1.0, 2.0]
+
+safety:
+  ttc_warning_s: 3.0
+  ttc_critical_s: 1.5
+  max_velocity_kmh: 200.0
+  max_position_jump_m: 10.0
+  plausibility_enabled: true
+
+telemetry:
+  can_format: "csv"  # "csv", "asc", "blf"
+  speed_unit: "kmh"
+  braking_threshold_ms2: -3.0
+  steering_rate_threshold_degs: 45.0
+
+rag:
+  enabled: true
+  embedding_model: "BAAI/bge-large-en-v1.5"
+  qdrant_url: "http://localhost:6333"
+  collection: "haftung_chunks"
+  chunk_size: 1000
+  chunk_overlap: 200
+  top_k_retrieval: 5
+  top_k_rerank: 20
+  retrieval_strategy: "dense"
+  hybrid_alpha: 0.6
+
+evaluation:
+  variants: ["S1", "S2", "S3"]
+  reruns_per_accident: 5
+  categories:
+    - "rear_end"
+    - "side_collision"
+    - "head_on"
+    - "intersection"
+    - "pedestrian"
+    - "single_vehicle"
+  accidents_per_category: 5

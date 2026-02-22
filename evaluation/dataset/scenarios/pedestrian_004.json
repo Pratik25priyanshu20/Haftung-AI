@@ -1,0 +1,51 @@
+{
+  "scenario_id": "pedestrian_004",
+  "category": "pedestrian",
+  "scenario_text": "Am 17. September 2024 gegen 08:00 Uhr wurde eine ältere Dame beim Überqueren einer Fußgängerampel in der Marktstraße angefahren. Die Ampel zeigte für Fußgänger Grün. Fahrzeug A (Lieferwagen, Mercedes Sprinter) bog rechts ab und übersah die Fußgängerin im toten Winkel. Der Fahrer hatte keinen Schulterblick durchgeführt. Die Fußgängerin wurde am Hüftgelenk schwer verletzt.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "morning",
+    "road_type": "kreuzung",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Abbiegefehler ohne Schulterblick",
+    "primary_cause_taxonomy_id": "distraction",
+    "accident_type": "pedestrian",
+    "contributing_factors": [
+      {
+        "factor": "Kein Schulterblick beim Rechtsabbiegen",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Toter Winkel des Lieferwagens",
+        "category": "vehicle_defect",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fußgängerin",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§9 StVO",
+      "§26 StVO"
+    ],
+    "expected_claims": [
+      "Der Fahrer führte keinen Schulterblick durch.",
+      "Die Fußgängerin hatte Grün.",
+      "Der tote Winkel des Lieferwagens war ursächlich."
+    ],
+    "legal_references": [
+      "§9 Abs. 3 StVO"
+    ]
+  }
+}

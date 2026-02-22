@@ -1,0 +1,57 @@
+{
+  "scenario_id": "intersection_005",
+  "category": "intersection",
+  "scenario_text": "Am 25. November 2024 gegen 16:00 Uhr wollte Fahrzeug A (Citroën Berlingo) an einer Kreuzung wenden. Dabei blockierte er die Kreuzung und wurde von Fahrzeug B (Hyundai i30), das geradeaus fuhr, seitlich erfasst. Fahrzeug A hatte keinen Vorrang zum Wenden und behinderte den fließenden Verkehr. Die Sichtverhältnisse waren durch Regen eingeschränkt.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "rain",
+    "time_of_day": "afternoon",
+    "road_type": "kreuzung",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Unzulässiges Wenden im Kreuzungsbereich",
+    "primary_cause_taxonomy_id": "u_turn",
+    "accident_type": "intersection",
+    "contributing_factors": [
+      {
+        "factor": "Wenden ohne Vorrang",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Blockieren der Kreuzung",
+        "category": "human_error",
+        "severity": "secondary"
+      },
+      {
+        "factor": "Eingeschränkte Sicht durch Regen",
+        "category": "environmental",
+        "severity": "minor"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 80
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 20
+      }
+    ],
+    "relevant_stvo": [
+      "§9 StVO",
+      "§1 StVO"
+    ],
+    "expected_claims": [
+      "Fahrzeug A wendete unzulässig im Kreuzungsbereich.",
+      "Der fließende Verkehr wurde behindert.",
+      "Die Sichtverhältnisse waren durch Regen eingeschränkt."
+    ],
+    "legal_references": [
+      "§9 Abs. 5 StVO",
+      "§1 Abs. 2 StVO"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+BGH, Urteil vom 11. Maerz 2014 – VI ZR 3/13
+Geschwindigkeitsueberschreitung als Mitverschulden – Auswirkung auf die Haftungsverteilung
+
+Leitsatz:
+Eine Geschwindigkeitsueberschreitung des Geschaedigten begruendet ein Mitverschulden gemaess § 254 BGB, wenn feststeht, dass der Unfall bei Einhaltung der zulaessigen Hoechstgeschwindigkeit vermieden worden waere oder die Unfallfolgen bei niedrigerer Geschwindigkeit geringer ausgefallen waeren. Bei der Haftungsabwaegung ist die erhoehte Betriebsgefahr des zu schnell fahrenden Fahrzeugs in angemessenem Umfang zu beruecksichtigen.
+
+Sachverhalt:
+Der Klaeger befuhr mit seinem Kraftfahrzeug eine innerstaedtische Strasse mit einer zulaessigen Hoechstgeschwindigkeit von 50 km/h. Tatsaechlich fuhr der Klaeger zum Unfallzeitpunkt mit einer Geschwindigkeit von mindestens 72 km/h. Die Beklagte zu 1) bog mit ihrem Fahrzeug aus einer Grundstuecksausfahrt nach links in die vom Klaeger befahrene Strasse ein, ohne den herannahenden Klaeger rechtzeitig wahrzunehmen. Es kam zum Zusammenstoss, bei dem der Klaeger schwere Verletzungen erlitt, insbesondere eine Oberschenkelfraktur und ein Schaedel-Hirn-Trauma. Der Sachschaden am Fahrzeug des Klaegers betrug 11.500,00 Euro. Die Beklagte zu 2) war die Kfz-Haftpflichtversicherung der Beklagten zu 1).
+
+Entscheidungsgruende:
+Der Bundesgerichtshof hat die Revision der Beklagten teilweise stattgegeben und die Haftungsverteilung neu bestimmt. Der Senat hat zunaechst klargestellt, dass die Beklagte zu 1) durch das Einbiegen aus der Grundstuecksausfahrt unter Missachtung des fliessenden Verkehrs einen erheblichen Verkehrsverstoss gemaess § 10 StVO begangen hat. Dieser Verstoss begruende grundsaetzlich eine ueberwiegende Haftung der Beklagten.
+
+Gleichwohl hat der Senat betont, dass die erhebliche Geschwindigkeitsueberschreitung des Klaegers – er fuhr mindestens 44 % schneller als erlaubt – ein gewichtiges Mitverschulden begruende. Die Geschwindigkeitsueberschreitung sei in doppelter Hinsicht kausal geworden: Zum einen haette der Klaeger bei Einhaltung der zulaessigen Hoechstgeschwindigkeit sein Fahrzeug rechtzeitig zum Stillstand bringen oder den Zusammenstoss zumindest erheblich abmildern koennen. Zum anderen habe die Beklagte zu 1) bei ihrer Entscheidung, in die Strasse einzubiegen, die Verkehrslage anhand der zulaessigen Geschwindigkeit beurteilen duerfen. Ein Verkehrsteilnehmer, der aus einer untergeordneten Strasse einbiegt, darf grundsaetzlich darauf vertrauen, dass sich der fliessende Verkehr an die geltenden Geschwindigkeitsbegrenzungen haelt (sogenannter Vertrauensgrundsatz).
+
+Hinsichtlich der Betriebsgefahr hat der Senat ausgefuehrt, dass ein erheblich zu schnell fahrendes Fahrzeug eine gegenueber der normalen Betriebsgefahr deutlich erhoehte Gefahr darstellt. Diese erhoehte Betriebsgefahr ist bei der Abwaegung nach § 17 StVG zulasten des Geschwindigkeitsueberschreiters zu beruecksichtigen. Im Ergebnis hat der Senat eine Haftungsverteilung von 60 % zulasten der Beklagten und 40 % zulasten des Klaegers fuer angemessen erachtet.
+
+Ergebnis:
+Haftungsverteilung 60:40 zulasten der aus der Grundstuecksausfahrt Einbiegenden. Die erhebliche Geschwindigkeitsueberschreitung des Klaegers begruendet ein gewichtiges Mitverschulden, das ueber die blosse erhoehte Betriebsgefahr hinausgeht. Bei geringfuegigen Geschwindigkeitsueberschreitungen (bis ca. 10 %) kann die Mithaftung im Bereich von 20 % liegen; bei gravierenden Ueberschreitungen kann sie bis zu 50 % betragen.
+
+Relevante Normen: § 3 Abs. 1, 3 StVO, § 10 StVO, § 7 StVG, § 17 StVG, § 254 BGB, § 823 Abs. 1 BGB, § 823 Abs. 2 BGB i.V.m. § 3 StVO, § 115 VVG.

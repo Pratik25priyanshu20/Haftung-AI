@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (keep structure, ignore large files)
+data/sample_videos/*.mp4
+data/sample_videos/*.avi
+data/sample_can_logs/*.blf
+data/knowledge_base/**/*.pdf
+
+# Evaluation results
+evaluation/results/
+
+# Model weights
+*.pt
+*.onnx
+*.engine
+*.trt
+
+# Logs
+*.jsonl
+*.log
+
+# Docker
+docker-compose.override.yml
+
+# Coverage
+.coverage
+htmlcov/
+coverage.xml

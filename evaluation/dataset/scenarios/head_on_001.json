@@ -1,0 +1,54 @@
+{
+  "scenario_id": "head_on_001",
+  "category": "head_on",
+  "scenario_text": "Am 20. Februar 2024 gegen 02:30 Uhr kam es auf der B3 bei Heidelberg zu einem Frontalzusammenstoß. Fahrzeug A (BMW 5er) war als Geisterfahrer auf der falschen Fahrbahnseite unterwegs. Fahrzeug B (Peugeot 308) kam dem Geisterfahrer entgegen. Trotz Ausweichversuch von Fahrzeug B kam es zur frontalen Kollision. Die Polizei stellte fest, dass der Fahrer von Fahrzeug A mit 1,8 Promille stark alkoholisiert war. Beide Fahrer wurden schwer verletzt. An beiden Fahrzeugen entstand Totalschaden.",
+  "metadata": {
+    "location_type": "suburban",
+    "weather": "clear",
+    "time_of_day": "night",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Falschfahrt unter Alkoholeinfluss",
+    "primary_cause_taxonomy_id": "wrong_way",
+    "accident_type": "head_on",
+    "contributing_factors": [
+      {
+        "factor": "Falschfahrt (Geisterfahrer)",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Alkoholisierung (1,8 Promille)",
+        "category": "human_error",
+        "severity": "primary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§2 StVO",
+      "§24a StVG"
+    ],
+    "expected_claims": [
+      "Der Fahrer von Fahrzeug A war Geisterfahrer.",
+      "Der Fahrer war mit 1,8 Promille alkoholisiert.",
+      "Es kam zum Frontalzusammenstoß.",
+      "Der Fahrer von Fahrzeug B versuchte auszuweichen."
+    ],
+    "legal_references": [
+      "§2 Abs. 1 StVO",
+      "§24a StVG",
+      "§315c StGB"
+    ]
+  }
+}

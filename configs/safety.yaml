@@ -1,0 +1,31 @@
+# Safety configuration (ISO 26262 aligned)
+
+ttc:
+  warning_threshold_s: 3.0
+  critical_threshold_s: 1.5
+  min_closing_rate: 0.001
+
+risk:
+  high_speed_kmh: 80.0
+  medium_speed_kmh: 50.0
+
+warnings:
+  fcw_pre_ttc_s: 4.0
+  fcw_warning_ttc_s: 2.5
+  fcw_critical_ttc_s: 1.0
+
+plausibility:
+  max_velocity_kmh: 200.0
+  max_position_jump_m: 10.0
+  max_bbox_overlap: 0.8
+  max_detection_count: 100
+
+asil:
+  overrides: {}
+  # Example overrides:
+  # detection: "C"
+  # tracking: "C"
+
+iso_26262:
+  dtc_output_dir: "data/dtc_logs"
+  safety_log_dir: "data/safety_logs"

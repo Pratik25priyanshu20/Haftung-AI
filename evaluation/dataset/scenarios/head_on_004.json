@@ -1,0 +1,52 @@
+{
+  "scenario_id": "head_on_004",
+  "category": "head_on",
+  "scenario_text": "Am 24. August 2024 gegen 23:15 Uhr kam es auf der B500 im Schwarzwald zu einem schweren Frontalunfall. Der Fahrer von Fahrzeug A (VW Passat) war nach einer langen Fahrt übermüdet und schlief am Steuer ein. Das Fahrzeug geriet auf die Gegenfahrbahn und kollidierte frontal mit Fahrzeug B (Suzuki Vitara). Der Fahrer von A erlitt schwere Verletzungen. Die Fahrt hatte mehr als 10 Stunden ohne Pause gedauert.",
+  "metadata": {
+    "location_type": "rural",
+    "weather": "clear",
+    "time_of_day": "night",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Sekundenschlaf durch Übermüdung",
+    "primary_cause_taxonomy_id": "fatigue",
+    "accident_type": "head_on",
+    "contributing_factors": [
+      {
+        "factor": "Sekundenschlaf am Steuer",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Über 10 Stunden Fahrt ohne Pause",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§2 StVO",
+      "§3 StVO"
+    ],
+    "expected_claims": [
+      "Der Fahrer schlief am Steuer ein.",
+      "Die Fahrt dauerte über 10 Stunden ohne Pause.",
+      "Fahrzeug A geriet auf die Gegenfahrbahn."
+    ],
+    "legal_references": [
+      "§2 Abs. 1 StVO",
+      "§315c StGB"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "scenario_id": "single_vehicle_004",
+  "category": "single_vehicle",
+  "scenario_text": "Am 20. Oktober 2024 gegen 05:30 Uhr wich Fahrzeug A (Škoda Superb) auf der B33 einem Reh aus und kam dabei von der Fahrbahn ab. Das Fahrzeug prallte gegen einen Baum. Der Fahrer wurde eingeklemmt und musste von der Feuerwehr befreit werden. Die Strecke war als Wildwechselgebiet ausgeschildert. Der Fahrer fuhr mit ca. 80 km/h bei erlaubten 100 km/h.",
+  "metadata": {
+    "location_type": "rural",
+    "weather": "clear",
+    "time_of_day": "morning",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Wildunfall durch Ausweichmanöver",
+    "primary_cause_taxonomy_id": "animal_crossing",
+    "accident_type": "single_vehicle",
+    "contributing_factors": [
+      {
+        "factor": "Wildwechsel (Reh)",
+        "category": "environmental",
+        "severity": "primary"
+      },
+      {
+        "factor": "Ausweichmanöver statt Bremsung",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Jagdgenossenschaft",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§3 StVO"
+    ],
+    "expected_claims": [
+      "Ein Reh kreuzte die Fahrbahn.",
+      "Der Fahrer wich aus statt zu bremsen.",
+      "Die Strecke war als Wildwechselgebiet gekennzeichnet.",
+      "Das Fahrzeug prallte gegen einen Baum."
+    ],
+    "legal_references": [
+      "§3 StVO",
+      "§29 BJagdG"
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "scenario_id": "pedestrian_002",
+  "category": "pedestrian",
+  "scenario_text": "Am 6. März 2024 gegen 14:30 Uhr wurde ein Kind (8 Jahre) beim Überqueren der Schulstraße von Fahrzeug A (Audi Q3) erfasst. Das Kind rannte zwischen geparkten Autos auf die Fahrbahn. Der Fahrer fuhr mit 40 km/h in einer 30-Zone. Trotz Bremsung konnte er das Kind nicht vermeiden. Das Kind wurde am Bein verletzt. In unmittelbarer Nähe befand sich eine Grundschule mit entsprechender Beschilderung.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "afternoon",
+    "road_type": "innerorts",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Überhöhte Geschwindigkeit in Schulnähe",
+    "primary_cause_taxonomy_id": "speeding",
+    "accident_type": "pedestrian",
+    "contributing_factors": [
+      {
+        "factor": "Überhöhte Geschwindigkeit in 30-Zone",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Kind rannte unvorhergesehen auf Fahrbahn",
+        "category": "human_error",
+        "severity": "secondary"
+      },
+      {
+        "factor": "Parkende Autos versperrten Sicht",
+        "category": "environmental",
+        "severity": "minor"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 70
+      },
+      {
+        "party": "Aufsichtsperson",
+        "percentage": 30
+      }
+    ],
+    "relevant_stvo": [
+      "§3 StVO",
+      "§26 StVO"
+    ],
+    "expected_claims": [
+      "Der Fahrer fuhr 40 km/h in einer 30-Zone.",
+      "Ein Kind rannte zwischen geparkten Autos auf die Straße.",
+      "In der Nähe befindet sich eine Grundschule.",
+      "Gegenüber Kindern besteht erhöhte Sorgfaltspflicht."
+    ],
+    "legal_references": [
+      "§3 Abs. 2a StVO",
+      "§3 StVO"
+    ]
+  }
+}

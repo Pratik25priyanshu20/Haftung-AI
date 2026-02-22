@@ -1,0 +1,52 @@
+{
+  "scenario_id": "intersection_003",
+  "category": "intersection",
+  "scenario_text": "Am 2. Oktober 2024 um 17:15 Uhr kam es an der Kreuzung Friedrichstraße / Schlossgasse zu einem Unfall. Fahrzeug A (Dacia Sandero) fuhr mit ca. 65 km/h in den Kreuzungsbereich ein (erlaubt waren 50 km/h). Fahrzeug B (Smart ForTwo) fuhr von rechts kommend bei Grün in die Kreuzung. Fahrzeug A konnte aufgrund der überhöhten Geschwindigkeit nicht mehr rechtzeitig bremsen. Es kam zur T-Bone-Kollision.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "afternoon",
+    "road_type": "kreuzung",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Überhöhte Geschwindigkeit im Kreuzungsbereich",
+    "primary_cause_taxonomy_id": "speeding",
+    "accident_type": "intersection",
+    "contributing_factors": [
+      {
+        "factor": "Überhöhte Geschwindigkeit (65 statt 50 km/h)",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Unzureichende Aufmerksamkeit im Kreuzungsbereich",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 80
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 20
+      }
+    ],
+    "relevant_stvo": [
+      "§3 StVO",
+      "§8 StVO"
+    ],
+    "expected_claims": [
+      "Fahrzeug A fuhr mit 65 km/h bei erlaubten 50 km/h.",
+      "Die Geschwindigkeit war für den Kreuzungsbereich zu hoch.",
+      "Fahrzeug B hatte Grün."
+    ],
+    "legal_references": [
+      "§3 Abs. 3 StVO",
+      "§8 StVO"
+    ]
+  }
+}

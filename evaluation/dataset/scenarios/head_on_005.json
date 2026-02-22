@@ -1,0 +1,59 @@
+{
+  "scenario_id": "head_on_005",
+  "category": "head_on",
+  "scenario_text": "Am 16. März 2024 gegen 21:00 Uhr kam es auf der B31 bei Friedrichshafen zu einem Frontalunfall. Fahrzeug A (Seat Ibiza) war mit 1,5 Promille alkoholisiert unterwegs und geriet in einer leichten Kurve auf die Gegenfahrbahn. Fahrzeug B (Volvo XC60) konnte trotz Vollbremsung nicht ausweichen. Die Geschwindigkeit von Fahrzeug A lag bei ca. 90 km/h bei erlaubten 70 km/h. Beide Fahrzeuge wurden stark beschädigt.",
+  "metadata": {
+    "location_type": "suburban",
+    "weather": "clear",
+    "time_of_day": "night",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Trunkenheitsfahrt mit Fahrbahnabweichung",
+    "primary_cause_taxonomy_id": "intoxication",
+    "accident_type": "head_on",
+    "contributing_factors": [
+      {
+        "factor": "Alkoholisierung (1,5 Promille)",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Überhöhte Geschwindigkeit",
+        "category": "human_error",
+        "severity": "secondary"
+      },
+      {
+        "factor": "Kurvige Strecke",
+        "category": "environmental",
+        "severity": "minor"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§24a StVG",
+      "§3 StVO",
+      "§2 StVO"
+    ],
+    "expected_claims": [
+      "Der Fahrer war mit 1,5 Promille alkoholisiert.",
+      "Die Geschwindigkeit lag über dem Limit.",
+      "Fahrzeug A geriet in der Kurve auf die Gegenfahrbahn."
+    ],
+    "legal_references": [
+      "§24a StVG",
+      "§316 StGB",
+      "§3 StVO"
+    ]
+  }
+}

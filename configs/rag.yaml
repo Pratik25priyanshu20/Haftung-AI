@@ -1,0 +1,56 @@
+# RAG pipeline configuration
+
+embeddings:
+  model: "BAAI/bge-large-en-v1.5"
+  normalize: true
+  batch_size: 32
+
+vectorstore:
+  url: "http://localhost:6333"
+  collection: "haftung_chunks"
+  distance: "cosine"
+
+retrieval:
+  strategy: "dense"  # "dense" or "hybrid"
+  top_k_recall: 20
+  top_k_final: 5
+  hybrid_alpha: 0.6
+
+reranker:
+  model: "BAAI/bge-reranker-large"
+  max_length: 512
+  batch_size: 16
+
+chunking:
+  chunk_size: 1000
+  chunk_overlap: 200
+  separators:
+    - "\n\n"
+    - "\n"
+    - "."
+    - " "
+
+knowledge_base:
+  sources:
+    - name: "stvo"
+      path: "data/knowledge_base/stvo/"
+      description: "German traffic law (Straßenverkehrsordnung)"
+    - name: "case_law"
+      path: "data/knowledge_base/case_law/"
+      description: "BGH accident rulings"
+    - name: "insurance"
+      path: "data/knowledge_base/insurance_guidelines/"
+      description: "Insurance liability guidelines"
+
+evidence:
+  cluster_threshold: 0.85
+  min_relevance: 0.3
+
+contradiction:
+  enabled: true
+  max_checks: 15
+  severity_penalties:
+    direct: 0.3
+    partial: 0.2
+    tension: 0.1
+    none: 0.0

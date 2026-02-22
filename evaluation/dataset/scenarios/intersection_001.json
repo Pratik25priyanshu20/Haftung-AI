@@ -1,0 +1,51 @@
+{
+  "scenario_id": "intersection_001",
+  "category": "intersection",
+  "scenario_text": "Am 7. April 2024 gegen 09:45 Uhr kam es an der Kreuzung Berliner Straße / Münchner Straße zu einem Unfall durch Missachtung der Vorfahrt. Fahrzeug A (Mazda CX-5) kam aus der untergeordneten Münchner Straße und fuhr trotz Stopp-Schild in die Kreuzung ein. Fahrzeug B (Kia Sportage) hatte Vorfahrt auf der Berliner Straße und konnte nicht mehr rechtzeitig bremsen. Es kam zur Kollision im Kreuzungsbereich. Am Fahrzeug B entstand erheblicher Seitenschaden.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "morning",
+    "road_type": "kreuzung",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Missachtung des Stopp-Schildes",
+    "primary_cause_taxonomy_id": "right_of_way",
+    "accident_type": "intersection",
+    "contributing_factors": [
+      {
+        "factor": "Missachtung des Stopp-Schildes",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Einfahren in bevorrechtigte Straße",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§8 StVO"
+    ],
+    "expected_claims": [
+      "Fahrzeug A missachtete das Stopp-Schild.",
+      "Fahrzeug B hatte Vorfahrt.",
+      "Die Kollision ereignete sich im Kreuzungsbereich."
+    ],
+    "legal_references": [
+      "§8 Abs. 1 StVO",
+      "§8 Abs. 2 StVO"
+    ]
+  }
+}

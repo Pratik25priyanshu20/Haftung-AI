@@ -1,0 +1,50 @@
+{
+  "scenario_id": "side_collision_003",
+  "category": "side_collision",
+  "scenario_text": "Am 27. Juni 2024 gegen 18:45 Uhr wurde auf der Schillerstraße in München ein geparktes Fahrzeug (Fahrzeug B, Honda Jazz) beschädigt, als der Fahrer von Fahrzeug A (Dacia Duster) die Fahrertür öffnete, ohne auf den fließenden Verkehr zu achten. Ein vorbeifahrendes Motorrad (Beteiligter C) konnte der geöffneten Tür nicht mehr ausweichen, touchierte diese und stürzte. Der Motorradfahrer erlitt Prellungen. Die Tür von Fahrzeug A wurde stark beschädigt, das Motorrad hatte Kratzschäden.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "evening",
+    "road_type": "innerorts",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Unvorsichtiges Öffnen der Fahrzeugtür",
+    "primary_cause_taxonomy_id": "door_opening",
+    "accident_type": "side_collision",
+    "contributing_factors": [
+      {
+        "factor": "Türöffnung ohne Verkehrskontrolle",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Enger Straßenraum",
+        "category": "environmental",
+        "severity": "minor"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Motorrad C",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§14 StVO"
+    ],
+    "expected_claims": [
+      "Die Fahrzeugtür wurde ohne Blick in den Verkehr geöffnet.",
+      "Der Motorradfahrer konnte nicht mehr ausweichen.",
+      "Der Türöffner haftet für den entstandenen Schaden."
+    ],
+    "legal_references": [
+      "§14 Abs. 1 StVO"
+    ]
+  }
+}

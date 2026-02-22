@@ -1,0 +1,50 @@
+{
+  "scenario_id": "single_vehicle_001",
+  "category": "single_vehicle",
+  "scenario_text": "Am 1. September 2024 gegen 22:00 Uhr kam Fahrzeug A (BMW M3) auf der B462 im Kinzigtal von der Fahrbahn ab. Der Fahrer fuhr in einer langgezogenen Linkskurve mit ca. 130 km/h (erlaubt: 80 km/h). Das Fahrzeug brach aus und prallte gegen die Leitplanke. Der Fahrer blieb unverletzt, das Fahrzeug erlitt erheblichen Front- und Seitenschaden. Es waren keine anderen Fahrzeuge beteiligt.",
+  "metadata": {
+    "location_type": "rural",
+    "weather": "clear",
+    "time_of_day": "night",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Überhöhte Geschwindigkeit in Kurve",
+    "primary_cause_taxonomy_id": "speeding",
+    "accident_type": "single_vehicle",
+    "contributing_factors": [
+      {
+        "factor": "Massiv überhöhte Geschwindigkeit (130 statt 80 km/h)",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Kurvenlage der Straße",
+        "category": "environmental",
+        "severity": "minor"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Straßenbaulastträger",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§3 StVO"
+    ],
+    "expected_claims": [
+      "Die Geschwindigkeit lag 50 km/h über dem Limit.",
+      "Das Fahrzeug kam in einer Linkskurve von der Fahrbahn ab.",
+      "Es waren keine anderen Fahrzeuge beteiligt."
+    ],
+    "legal_references": [
+      "§3 Abs. 1 StVO"
+    ]
+  }
+}

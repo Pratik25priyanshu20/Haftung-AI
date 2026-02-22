@@ -1,0 +1,22 @@
+§ 4 StVO – Abstand
+
+(1) Der Abstand zu einem vorausfahrenden Fahrzeug muss in der Regel so groß sein, dass auch dann hinter diesem gehalten werden kann, wenn es plötzlich gebremst wird. Der Führende eines Fahrzeugs darf nur so schnell fahren, dass er innerhalb der übersehbaren Strecke anhalten kann. Wer vorausfährt, darf nicht ohne zwingenden Grund stark bremsen.
+
+(2) Wer ein Kraftfahrzeug führt, für das eine besondere Geschwindigkeitsbeschränkung gilt, sowie Führer von Zügen, die länger als 7 m sind, müssen außerhalb geschlossener Ortschaften ständig so großen Abstand von dem vorausfahrenden Kraftfahrzeug halten, dass ein überholendes Kraftfahrzeug einscheren kann. Dies gilt nicht, wenn zum Überholen ausgeschert wird und dies angekündigt wurde, sowie in Fahrstreifen, in denen Kolonnenverkehr herrscht.
+
+(3) Auf Autobahnen und Kraftfahrstraßen gilt für den Sicherheitsabstand eine besondere Regelung. Bei Geschwindigkeiten von mehr als 50 km/h muss der Abstand mindestens die Strecke betragen, die in einer halben Sekunde bei der jeweiligen Geschwindigkeit zurückgelegt wird. Als Faustregel gilt der sogenannte „halbe Tacho": Bei einer Geschwindigkeit von 100 km/h sind dies mindestens 50 Meter Abstand. Bei einer Geschwindigkeit von 130 km/h beträgt der empfohlene Mindestabstand demnach 65 Meter. Wird dieser Abstand unterschritten, liegt ein Verstoß gegen die Abstandsregelung vor.
+
+(4) In besonderen Verkehrssituationen, etwa bei Nässe, Glätte, Nebel oder schlechten Sichtverhältnissen, ist der Abstand entsprechend zu vergrößern. Gleiches gilt in Bereichen, in denen mit plötzlichen Bremsmanövern gerechnet werden muss, wie etwa in der Nähe von Schulen, Kindergärten, Fußgängerüberwegen und an Haltestellen des öffentlichen Nahverkehrs.
+
+(5) Der Sicherheitsabstand zum seitlichen Überholen von Radfahrern und Fußgängern wird in § 5 Absatz 4 gesondert geregelt. Innerorts ist ein Mindestabstand von 1,5 Metern, außerorts von 2 Metern einzuhalten.
+
+Rechtsfolgen und Bußgeldkatalog:
+
+Ein Verstoß gegen die Abstandsregelungen nach § 4 StVO wird gemäß der Bußgeldkatalog-Verordnung (BKatV) geahndet. Die Höhe des Bußgeldes richtet sich nach dem Grad der Unterschreitung des erforderlichen Abstands und der gefahrenen Geschwindigkeit:
+
+- Bei einem Abstandsverstoß mit weniger als 80 km/h droht ein Verwarnungsgeld von 25 Euro.
+- Bei Geschwindigkeiten über 80 km/h und einem Abstand von weniger als 5/10 des halben Tachowertes: Bußgeld von 75 Euro und 1 Punkt im Fahreignungsregister.
+- Bei Geschwindigkeiten über 100 km/h und einem Abstand von weniger als 3/10 des halben Tachowertes: Bußgeld von 160 Euro, 2 Punkte und 1 Monat Fahrverbot.
+- Bei Geschwindigkeiten über 130 km/h und einem Abstand von weniger als 1/10 des halben Tachowertes: Bußgeld von 400 Euro, 2 Punkte und 3 Monate Fahrverbot.
+
+Kommt es infolge eines Abstandsverstoßes zu einem Auffahrunfall, spricht der Beweis des ersten Anscheins (Anscheinsbeweis) grundsätzlich für ein Verschulden des Auffahrenden. Dieser muss darlegen und beweisen, dass ihn kein Verschulden trifft, etwa weil der Vorausfahrende grundlos stark gebremst hat (§ 4 Abs. 1 Satz 2 StVO).

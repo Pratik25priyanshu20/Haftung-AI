@@ -1,0 +1,59 @@
+{
+  "scenario_id": "rear_end_001",
+  "category": "rear_end",
+  "scenario_text": "Am 15. März 2024 gegen 08:15 Uhr ereignete sich auf der B27 in Richtung Stuttgart ein Auffahrunfall. Der PKW (Fahrzeug A), ein VW Golf, fuhr mit ca. 80 km/h auf der rechten Fahrspur. Der vorausfahrende LKW (Fahrzeug B) musste verkehrsbedingt abbremsen. Der Fahrer von Fahrzeug A bemerkte das Bremsmanöver zu spät und fuhr trotz Vollbremsung auf das Heck des LKW auf. Der Sicherheitsabstand betrug zum Zeitpunkt des Bremsmanövers nur ca. 15 Meter bei einer Geschwindigkeit von 80 km/h, was deutlich unter dem erforderlichen Mindestabstand lag. Die Straße war trocken, die Sichtverhältnisse waren gut. Der Fahrer von Fahrzeug A gab an, kurz auf sein Mobiltelefon geschaut zu haben. Am Fahrzeug A entstand erheblicher Frontschaden, am LKW leichter Heckschaden. Beide Fahrer blieben unverletzt.",
+  "metadata": {
+    "location_type": "suburban",
+    "weather": "clear",
+    "time_of_day": "morning",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Unzureichender Sicherheitsabstand",
+    "primary_cause_taxonomy_id": "following_distance",
+    "accident_type": "rear_end",
+    "contributing_factors": [
+      {
+        "factor": "Zu geringer Sicherheitsabstand",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Ablenkung durch Mobiltelefon",
+        "category": "human_error",
+        "severity": "secondary"
+      },
+      {
+        "factor": "Verkehrsbedingtes Abbremsen des LKW",
+        "category": "traffic",
+        "severity": "minor"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§4 StVO",
+      "§23 StVO"
+    ],
+    "expected_claims": [
+      "Der Sicherheitsabstand war unzureichend.",
+      "Der Fahrer war durch ein Mobiltelefon abgelenkt.",
+      "Fahrzeug A fuhr auf das Heck des LKW auf.",
+      "Der Anscheinsbeweis spricht gegen den Auffahrenden."
+    ],
+    "legal_references": [
+      "§4 StVO",
+      "§23 StVO",
+      "§7 StVG"
+    ]
+  }
+}

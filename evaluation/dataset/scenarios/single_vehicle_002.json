@@ -1,0 +1,52 @@
+{
+  "scenario_id": "single_vehicle_002",
+  "category": "single_vehicle",
+  "scenario_text": "Am 15. August 2024 gegen 13:30 Uhr platzte bei Fahrzeug A (Fiat Ducato Wohnmobil) auf der A7 bei Kassel der rechte Vorderreifen. Das Fahrzeug geriet ins Schleudern und prallte gegen die Mittelleitplanke. Der Fahrer hatte den Reifendruck seit mehreren Monaten nicht kontrolliert. Das Profil war stark abgefahren. Zwei Insassen wurden leicht verletzt.",
+  "metadata": {
+    "location_type": "highway",
+    "weather": "clear",
+    "time_of_day": "afternoon",
+    "road_type": "autobahn",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Reifenplatzer durch mangelnde Wartung",
+    "primary_cause_taxonomy_id": "tire_blowout",
+    "accident_type": "single_vehicle",
+    "contributing_factors": [
+      {
+        "factor": "Reifenplatzer",
+        "category": "vehicle_defect",
+        "severity": "primary"
+      },
+      {
+        "factor": "Vernachlässigte Reifenwartung",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Reifenhersteller",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§23 StVO",
+      "§36 StVZO"
+    ],
+    "expected_claims": [
+      "Der Reifen platzte aufgrund mangelnder Wartung.",
+      "Der Reifendruck wurde seit Monaten nicht kontrolliert.",
+      "Das Reifenprofil war stark abgefahren."
+    ],
+    "legal_references": [
+      "§23 StVO",
+      "§36 StVZO"
+    ]
+  }
+}

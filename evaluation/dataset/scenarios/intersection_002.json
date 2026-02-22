@@ -1,0 +1,51 @@
+{
+  "scenario_id": "intersection_002",
+  "category": "intersection",
+  "scenario_text": "Am 19. Mai 2024 gegen 08:30 Uhr überfuhr Fahrzeug A (Ford Kuga) eine rote Ampel an der Kreuzung Ringstraße / Gartenstraße. Der Fahrer gab an, die Ampel bei Gelb noch passieren zu wollen, doch die Ampel war bereits seit 2 Sekunden rot. Fahrzeug B (Mini Cooper), das bei Grün in die Kreuzung einfuhr, wurde seitlich getroffen. Die Dashcam von Fahrzeug B bestätigte den Rotlichtverstoß. Drei Personen wurden leicht verletzt.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "morning",
+    "road_type": "kreuzung",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Rotlichtverstoß",
+    "primary_cause_taxonomy_id": "red_light",
+    "accident_type": "intersection",
+    "contributing_factors": [
+      {
+        "factor": "Überfahren der roten Ampel",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Fehleinschätzung der Ampelphase",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§37 StVO"
+    ],
+    "expected_claims": [
+      "Fahrzeug A überfuhr die rote Ampel.",
+      "Die Ampel war bereits seit 2 Sekunden rot.",
+      "Fahrzeug B fuhr bei Grün in die Kreuzung ein.",
+      "Die Dashcam bestätigte den Rotlichtverstoß."
+    ],
+    "legal_references": [
+      "§37 Abs. 2 StVO"
+    ]
+  }
+}

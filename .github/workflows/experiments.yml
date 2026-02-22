@@ -1,0 +1,83 @@
+name: Run Experiments
+
+on:
+  workflow_dispatch:
+    inputs:
+      variant:
+        description: "System variant to run"
+        required: true
+        default: "all"
+        type: choice
+        options:
+          - all
+          - S1
+          - S2
+          - S3
+      stability_reruns:
+        description: "Number of stability reruns (0 = skip)"
+        required: false
+        default: "5"
+        type: string
+
+env:
+  GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+  QDRANT_URL: http://localhost:6333
+
+jobs:
+  run-experiments:
+    runs-on: ubuntu-latest
+    services:
+      qdrant:
+        image: qdrant/qdrant:latest
+        ports:
+          - 6333:6333
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+
+      - name: Ingest knowledge base
+        run: python scripts/ingest_knowledge_base.py
+
+      - name: Run experiments
+        run: |
+          DATASET="evaluation/dataset/accidents"
+          OUTPUT="evaluation/results"
+          mkdir -p $OUTPUT
+
+          if [ "${{ github.event.inputs.variant }}" = "all" ]; then
+            python evaluation/runners/run_all_systems.py --dataset $DATASET --output $OUTPUT
+          else
+            python evaluation/runners/run_experiment.py --dataset $DATASET --variant ${{ github.event.inputs.variant }} --output $OUTPUT
+          fi
+
+      - name: Run stability tests
+        if: ${{ github.event.inputs.stability_reruns != '0' }}
+        run: |
+          DATASET="evaluation/dataset/accidents"
+          OUTPUT="evaluation/results"
+
+          for VARIANT in S1 S2 S3; do
+            if [ "${{ github.event.inputs.variant }}" = "all" ] || [ "${{ github.event.inputs.variant }}" = "$VARIANT" ]; then
+              python evaluation/runners/run_stability.py --dataset $DATASET --variant $VARIANT --reruns ${{ github.event.inputs.stability_reruns }} --output $OUTPUT
+            fi
+          done
+
+      - name: Generate comparison report
+        if: ${{ github.event.inputs.variant == 'all' }}
+        run: |
+          python evaluation/analysis/compare_systems.py --results evaluation/results
+          python evaluation/analysis/plot_results.py --results evaluation/results
+          python evaluation/analysis/statistical_tests.py --results evaluation/results
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-results
+          path: evaluation/results/
+          retention-days: 90

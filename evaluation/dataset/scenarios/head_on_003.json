@@ -1,0 +1,52 @@
+{
+  "scenario_id": "head_on_003",
+  "category": "head_on",
+  "scenario_text": "Am 11. Oktober 2024 gegen 19:00 Uhr kam es auf der L520 zu einem Frontalzusammenstoß. Der Fahrer von Fahrzeug A (Opel Insignia) war abgelenkt, da er sein Navigationsgerät bediente, und geriet dadurch auf die Gegenfahrbahn. Fahrzeug B (Nissan Qashqai) konnte nicht mehr ausweichen. Die Kollision erfolgte mit einer kombinierten Geschwindigkeit von ca. 120 km/h. Beide Fahrzeuge erlitten Totalschaden, vier Personen wurden verletzt.",
+  "metadata": {
+    "location_type": "rural",
+    "weather": "clear",
+    "time_of_day": "evening",
+    "road_type": "landstrasse",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Ablenkung durch Navigationssystem",
+    "primary_cause_taxonomy_id": "distraction",
+    "accident_type": "head_on",
+    "contributing_factors": [
+      {
+        "factor": "Bedienung des Navigationsgeräts während der Fahrt",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Abkommen auf die Gegenfahrbahn",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§23 StVO",
+      "§2 StVO"
+    ],
+    "expected_claims": [
+      "Der Fahrer bediente sein Navigationsgerät während der Fahrt.",
+      "Fahrzeug A geriet auf die Gegenfahrbahn.",
+      "Fahrzeug B konnte nicht mehr ausweichen."
+    ],
+    "legal_references": [
+      "§23 Abs. 1a StVO",
+      "§2 Abs. 2 StVO"
+    ]
+  }
+}

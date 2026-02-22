@@ -1,0 +1,52 @@
+{
+  "scenario_id": "side_collision_004",
+  "category": "side_collision",
+  "scenario_text": "Am 14. April 2024 um 16:00 Uhr kam es auf der B28 zu einem Überholunfall. Fahrzeug A (Tesla Model 3) setzte zum Überholen von Fahrzeug B (Traktor) an. Gleichzeitig scherte Fahrzeug B ohne Blinker nach links aus, um in einen Feldweg abzubiegen. Es kam zur seitlichen Kollision. Fahrzeug A war bereits auf Höhe des Traktors, als dieser ausscherte. Der Traktorfahrer gab an, den Überholer nicht bemerkt zu haben. Beide Fahrzeuge wurden beschädigt.",
+  "metadata": {
+    "location_type": "rural",
+    "weather": "clear",
+    "time_of_day": "afternoon",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Überholunfall durch plötzliches Ausscheren des Überholten",
+    "primary_cause_taxonomy_id": "overtaking",
+    "accident_type": "side_collision",
+    "contributing_factors": [
+      {
+        "factor": "Abbiegen ohne Blinker",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Fehlende Rücksicht auf überholendes Fahrzeug",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug B",
+        "percentage": 70
+      },
+      {
+        "party": "Fahrzeug A",
+        "percentage": 30
+      }
+    ],
+    "relevant_stvo": [
+      "§5 StVO",
+      "§9 StVO"
+    ],
+    "expected_claims": [
+      "Der Traktor bog ohne Blinker nach links ab.",
+      "Fahrzeug A war bereits im Überholvorgang.",
+      "Beide Parteien tragen eine Mitschuld."
+    ],
+    "legal_references": [
+      "§5 Abs. 2 StVO",
+      "§9 Abs. 1 StVO"
+    ]
+  }
+}

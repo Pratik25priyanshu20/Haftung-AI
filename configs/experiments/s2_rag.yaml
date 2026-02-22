@@ -1,0 +1,18 @@
+# S2: RAG variant — LLM reasoning with StVO/case law retrieval
+
+variant: "S2"
+description: "RAG-augmented system. LLM reasons with retrieved legal knowledge."
+
+rag:
+  enabled: true
+
+constraints:
+  enabled: false
+
+agents:
+  vision: true
+  telemetry: true
+  evidence: true
+  contradiction: true
+  causation: true
+  report: true

@@ -1,0 +1,50 @@
+{
+  "scenario_id": "side_collision_001",
+  "category": "side_collision",
+  "scenario_text": "Am 3. Mai 2024 gegen 10:20 Uhr kam es auf der A5 bei Frankfurt zu einem Seitenkollision beim Spurwechsel. Fahrzeug A (Porsche Cayenne) wechselte von der mittleren auf die rechte Fahrspur, ohne den Schulterblick durchzuführen. Fahrzeug B (Fiat 500), das sich bereits auf der rechten Spur befand, wurde seitlich getroffen. Fahrzeug A hatte zwar geblinkt, aber den Seitenraum nicht ausreichend kontrolliert. Beide Fahrzeuge erlitten Seitenschäden. Die Fahrerin von Fahrzeug B wurde leicht verletzt.",
+  "metadata": {
+    "location_type": "highway",
+    "weather": "clear",
+    "time_of_day": "morning",
+    "road_type": "autobahn",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Fahrstreifenwechsel ohne ausreichende Sicherung",
+    "primary_cause_taxonomy_id": "lane_change",
+    "accident_type": "side_collision",
+    "contributing_factors": [
+      {
+        "factor": "Kein Schulterblick",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Unzureichende Spiegelkontrolle",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§7 StVO"
+    ],
+    "expected_claims": [
+      "Der Spurwechsel erfolgte ohne Schulterblick.",
+      "Fahrzeug B befand sich bereits auf der rechten Spur.",
+      "Der Fahrer von Fahrzeug A hat den toten Winkel nicht kontrolliert."
+    ],
+    "legal_references": [
+      "§7 Abs. 5 StVO"
+    ]
+  }
+}

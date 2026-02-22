@@ -1,0 +1,57 @@
+{
+  "scenario_id": "rear_end_004",
+  "category": "rear_end",
+  "scenario_text": "Am 8. Juli 2024 gegen 14:00 Uhr kam es auf der B10 zu einem Auffahrunfall mit drei Fahrzeugen. Fahrzeug C (Opel Corsa) fuhr mit überhöhter Geschwindigkeit (ca. 100 km/h bei erlaubten 70 km/h) und konnte nicht rechtzeitig bremsen, als Fahrzeug B (Toyota Yaris) verkehrsbedingt bremste. Fahrzeug C fuhr auf B auf, wodurch B auf das davor stehende Fahrzeug A (VW Polo) geschoben wurde. Die Straße war trocken und übersichtlich. Der Fahrer von C war unerfahren und hatte den Führerschein erst seit drei Monaten.",
+  "metadata": {
+    "location_type": "suburban",
+    "weather": "clear",
+    "time_of_day": "afternoon",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 3
+  },
+  "ground_truth": {
+    "primary_cause": "Überhöhte Geschwindigkeit",
+    "primary_cause_taxonomy_id": "speeding",
+    "accident_type": "rear_end",
+    "contributing_factors": [
+      {
+        "factor": "Überhöhte Geschwindigkeit",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Unzureichender Sicherheitsabstand",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug C",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      },
+      {
+        "party": "Fahrzeug A",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§3 StVO",
+      "§4 StVO"
+    ],
+    "expected_claims": [
+      "Die Geschwindigkeit lag ca. 30 km/h über dem Tempolimit.",
+      "Es handelt sich um einen Kettenauffahrunfall.",
+      "Fahrzeug B wurde auf Fahrzeug A aufgeschoben."
+    ],
+    "legal_references": [
+      "§3 StVO",
+      "§4 StVO",
+      "§7 StVG"
+    ]
+  }
+}

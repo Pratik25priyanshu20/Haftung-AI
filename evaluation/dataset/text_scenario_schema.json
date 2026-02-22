@@ -1,0 +1,202 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Haftung_AI Text Scenario",
+  "description": "Schema for text-based accident scenario evaluation with German narrative and structured ground truth",
+  "type": "object",
+  "required": ["scenario_id", "category", "scenario_text", "ground_truth"],
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "description": "Unique scenario identifier (e.g., rear_end_001)",
+      "pattern": "^[a-z_]+_\\d{3}$"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "rear_end",
+        "side_collision",
+        "head_on",
+        "intersection",
+        "pedestrian",
+        "single_vehicle"
+      ],
+      "description": "Accident category classification"
+    },
+    "scenario_text": {
+      "type": "string",
+      "description": "German accident narrative in Unfallbericht style (200-400 words)",
+      "minLength": 400,
+      "maxLength": 3000
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Contextual metadata about the accident scenario",
+      "properties": {
+        "location_type": {
+          "type": "string",
+          "enum": ["urban", "suburban", "rural", "highway", "parking"],
+          "description": "Type of location where the accident occurred"
+        },
+        "weather": {
+          "type": "string",
+          "enum": ["clear", "rain", "snow", "fog", "ice", "wind"],
+          "description": "Weather conditions at time of accident"
+        },
+        "time_of_day": {
+          "type": "string",
+          "enum": ["morning", "midday", "afternoon", "evening", "night"],
+          "description": "General time of day"
+        },
+        "road_type": {
+          "type": "string",
+          "enum": ["autobahn", "bundesstrasse", "landstrasse", "innerorts", "kreuzung", "kreisverkehr", "parkplatz"],
+          "description": "Type of road where accident occurred"
+        },
+        "vehicles_involved": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Number of vehicles involved in the accident"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ground_truth": {
+      "type": "object",
+      "description": "Structured ground truth for evaluation",
+      "required": [
+        "primary_cause",
+        "primary_cause_taxonomy_id",
+        "accident_type",
+        "contributing_factors",
+        "responsibility",
+        "relevant_stvo",
+        "expected_claims",
+        "legal_references"
+      ],
+      "properties": {
+        "primary_cause": {
+          "type": "string",
+          "description": "Free-text description of the primary cause of the accident"
+        },
+        "primary_cause_taxonomy_id": {
+          "type": "string",
+          "enum": [
+            "following_distance",
+            "speeding",
+            "right_of_way",
+            "red_light",
+            "lane_change",
+            "pedestrian_crossing",
+            "overtaking",
+            "distraction",
+            "intoxication",
+            "tire_blowout",
+            "brake_failure",
+            "weather_conditions",
+            "wrong_way",
+            "door_opening",
+            "u_turn",
+            "parking",
+            "road_conditions",
+            "animal_crossing",
+            "load_unsecured",
+            "fatigue"
+          ],
+          "description": "Canonical taxonomy ID for the primary cause"
+        },
+        "accident_type": {
+          "type": "string",
+          "enum": [
+            "rear_end",
+            "side_collision",
+            "head_on",
+            "intersection",
+            "pedestrian",
+            "single_vehicle"
+          ],
+          "description": "Type of accident (matches category)"
+        },
+        "contributing_factors": {
+          "type": "array",
+          "description": "List of contributing factors to the accident",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["factor", "category", "severity"],
+            "properties": {
+              "factor": {
+                "type": "string",
+                "description": "Description of the contributing factor"
+              },
+              "category": {
+                "type": "string",
+                "description": "Category of the contributing factor (e.g., human_error, vehicle_defect, environmental)"
+              },
+              "severity": {
+                "type": "string",
+                "enum": ["primary", "secondary", "minor"],
+                "description": "Severity level of the contributing factor"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "responsibility": {
+          "type": "array",
+          "description": "Responsibility allocation among parties (percentages must sum to 100)",
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["party", "percentage"],
+            "properties": {
+              "party": {
+                "type": "string",
+                "description": "Identifier for the responsible party (e.g., Fahrzeug A, Fussgaenger)"
+              },
+              "percentage": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100,
+                "description": "Percentage of responsibility attributed to this party"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "relevant_stvo": {
+          "type": "array",
+          "description": "Relevant sections of the Strassenverkehrsordnung (StVO) for retrieval evaluation",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^§\\d+",
+            "description": "StVO reference (e.g., §4 StVO)"
+          }
+        },
+        "expected_claims": {
+          "type": "array",
+          "description": "German factual claims that should appear in model output (for NLI hallucination evaluation)",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "description": "A factual claim in German that a correct analysis should include"
+          }
+        },
+        "legal_references": {
+          "type": "array",
+          "description": "Applicable legal references (StVO, StVG, BGB, etc.)",
+          "items": {
+            "type": "string",
+            "description": "Legal reference string (e.g., §4 StVO, §7 StVG)"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

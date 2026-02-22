@@ -1,0 +1,52 @@
+{
+  "scenario_id": "rear_end_002",
+  "category": "rear_end",
+  "scenario_text": "Am 22. Januar 2024 um 17:30 Uhr kam es auf der A8 bei Pforzheim zu einem Auffahrunfall im Berufsverkehr. Bei stockendem Verkehr bremste Fahrzeug B (Mercedes C-Klasse) ab. Fahrzeug A (BMW 3er) konnte nicht rechtzeitig bremsen und fuhr mit geschätzten 30 km/h auf. Der Fahrer von Fahrzeug A gab an, von der Sonne geblendet worden zu sein. Die Geschwindigkeit war an den Verkehrsfluss angepasst, jedoch war der Abstand zu gering. Es entstand Sachschaden an beiden Fahrzeugen. Der Beifahrer in Fahrzeug B klagte über Nackenschmerzen.",
+  "metadata": {
+    "location_type": "highway",
+    "weather": "clear",
+    "time_of_day": "afternoon",
+    "road_type": "autobahn",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Unaufmerksamkeit durch Blendung",
+    "primary_cause_taxonomy_id": "distraction",
+    "accident_type": "rear_end",
+    "contributing_factors": [
+      {
+        "factor": "Blendung durch tiefstehende Sonne",
+        "category": "environmental",
+        "severity": "primary"
+      },
+      {
+        "factor": "Zu geringer Abstand im Stau",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 85
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 15
+      }
+    ],
+    "relevant_stvo": [
+      "§4 StVO",
+      "§3 StVO"
+    ],
+    "expected_claims": [
+      "Der Fahrer wurde durch Sonneneinstrahlung geblendet.",
+      "Der Sicherheitsabstand war im stockenden Verkehr zu gering.",
+      "Die Aufprallgeschwindigkeit betrug ca. 30 km/h."
+    ],
+    "legal_references": [
+      "§4 StVO",
+      "§3 Abs. 1 StVO"
+    ]
+  }
+}

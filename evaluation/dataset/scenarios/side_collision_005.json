@@ -1,0 +1,52 @@
+{
+  "scenario_id": "side_collision_005",
+  "category": "side_collision",
+  "scenario_text": "Am 9. August 2024 gegen 11:30 Uhr kam es auf einem Supermarkt-Parkplatz zu einer Seitenkollision. Fahrzeug A (Hyundai Tucson) fuhr rückwärts aus einer Parklücke, während gleichzeitig Fahrzeug B (Citroën C3) die Parkplatzfahrgasse befuhr. Beide Fahrer hatten einander nicht gesehen. Die Kollision erfolgte seitlich. Es entstand leichter Blechschaden an beiden Fahrzeugen.",
+  "metadata": {
+    "location_type": "parking",
+    "weather": "clear",
+    "time_of_day": "midday",
+    "road_type": "parkplatz",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Rückwärtsfahren ohne ausreichende Sicherung auf Parkplatz",
+    "primary_cause_taxonomy_id": "parking",
+    "accident_type": "side_collision",
+    "contributing_factors": [
+      {
+        "factor": "Rückwärtsfahren ohne Sicht",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Unaufmerksamkeit des durchfahrenden Fahrzeugs",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 60
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 40
+      }
+    ],
+    "relevant_stvo": [
+      "§9 StVO",
+      "§1 StVO"
+    ],
+    "expected_claims": [
+      "Fahrzeug A fuhr rückwärts aus der Parklücke.",
+      "Beide Fahrer haben einander nicht gesehen.",
+      "Auf Parkplätzen gilt erhöhte Sorgfaltspflicht."
+    ],
+    "legal_references": [
+      "§9 Abs. 5 StVO",
+      "§1 StVO"
+    ]
+  }
+}

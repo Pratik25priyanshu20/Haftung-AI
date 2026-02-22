@@ -1,0 +1,51 @@
+{
+  "scenario_id": "head_on_002",
+  "category": "head_on",
+  "scenario_text": "Am 30. Juni 2024 gegen 15:30 Uhr kam es auf einer Landstraße bei Freiburg zu einem Frontalzusammenstoß beim Überholen. Fahrzeug A (Audi A6) überholte trotz durchgezogener Mittellinie und unübersichtlicher Kurve eine Fahrzeugkolonne. Im Gegenverkehr kam Fahrzeug B (Mercedes E-Klasse) entgegen. Beide Fahrzeuge kollidierten frontal. Der Überholvorgang war aufgrund der Kurvenlage und der Gegenverkehrssituation höchst riskant und verboten. Beide Fahrer wurden verletzt.",
+  "metadata": {
+    "location_type": "rural",
+    "weather": "clear",
+    "time_of_day": "afternoon",
+    "road_type": "landstrasse",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Verbotenes Überholen in unübersichtlicher Kurve",
+    "primary_cause_taxonomy_id": "overtaking",
+    "accident_type": "head_on",
+    "contributing_factors": [
+      {
+        "factor": "Überholen trotz Verbot",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Unübersichtliche Kurvenlage",
+        "category": "environmental",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§5 StVO"
+    ],
+    "expected_claims": [
+      "Das Überholen war aufgrund der durchgezogenen Mittellinie verboten.",
+      "Die Kurve war unübersichtlich.",
+      "Der Gegenverkehr war nicht einsehbar."
+    ],
+    "legal_references": [
+      "§5 Abs. 2 StVO",
+      "§5 Abs. 3 StVO"
+    ]
+  }
+}

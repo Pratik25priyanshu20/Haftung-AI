@@ -1,0 +1,38 @@
+# Perception pipeline configuration
+
+detector:
+  model: "yolov8n"
+  confidence_threshold: 0.25
+  allowed_classes:
+    0: "person"
+    2: "car"
+    3: "motorcycle"
+    5: "bus"
+    7: "truck"
+
+tracker:
+  type: "deepsort"
+  max_age: 25
+  n_init: 2
+  max_cosine_distance: 0.2
+  max_iou_distance: 0.7
+
+kalman:
+  process_noise: 0.5
+  measurement_noise: 1.0
+  dt: 0.033
+  rts_smoother: true
+
+temporal:
+  horizons_s: [0.5, 1.0, 2.0]
+  top_k: 3
+  lateral_sigma_scale: 1.5
+
+scene_graph:
+  proximity_threshold_m: 5.0
+  same_lane_threshold_px: 50
+
+impact_detection:
+  ttc_threshold: 0.1
+  min_distance_threshold_m: 2.0
+  confirmation_frames: 3

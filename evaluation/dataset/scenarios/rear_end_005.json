@@ -1,0 +1,52 @@
+{
+  "scenario_id": "rear_end_005",
+  "category": "rear_end",
+  "scenario_text": "Am 12. Dezember 2024 gegen 07:00 Uhr ereignete sich ein Auffahrunfall auf der A6 bei Mannheim. Es hatte in der Nacht gefroren, die Fahrbahn war mit einer dünnen Eisschicht bedeckt. Fahrzeug A (Seat Leon) fuhr mit Sommerreifen und konnte beim Bremsen nicht genügend Verzögerung aufbauen. Fahrzeug B (Renault Clio) hatte rechtzeitig gebremst und stand bereits. Der Aufprall erfolgte mit ca. 25 km/h. Die erlaubte Höchstgeschwindigkeit war aufgrund der Witterung bereits auf 80 km/h reduziert worden.",
+  "metadata": {
+    "location_type": "highway",
+    "weather": "ice",
+    "time_of_day": "morning",
+    "road_type": "autobahn",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Nicht angepasste Bereifung bei winterlichen Straßenverhältnissen",
+    "primary_cause_taxonomy_id": "weather_conditions",
+    "accident_type": "rear_end",
+    "contributing_factors": [
+      {
+        "factor": "Sommerreifen bei Glätte",
+        "category": "vehicle_defect",
+        "severity": "primary"
+      },
+      {
+        "factor": "Eisglätte auf Fahrbahn",
+        "category": "environmental",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Fahrzeug B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§2 StVO",
+      "§3 StVO"
+    ],
+    "expected_claims": [
+      "Fahrzeug A hatte Sommerreifen bei winterlichen Verhältnissen.",
+      "Die Fahrbahn war eisglatt.",
+      "Der Bremsweg war durch die ungeeignete Bereifung erheblich verlängert."
+    ],
+    "legal_references": [
+      "§2 Abs. 3a StVO",
+      "§3 StVO"
+    ]
+  }
+}

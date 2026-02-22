@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Haftung_AI Ground Truth",
+  "description": "Ground truth annotation for accident evaluation",
+  "type": "object",
+  "required": ["accident_id", "category", "primary_cause", "responsibility"],
+  "properties": {
+    "accident_id": {
+      "type": "string",
+      "description": "Unique accident identifier (e.g., rear_end_001)"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["rear_end", "side_collision", "head_on", "intersection", "pedestrian", "single_vehicle"]
+    },
+    "primary_cause": {
+      "type": "string",
+      "description": "Ground truth primary cause of accident"
+    },
+    "primary_cause_taxonomy_id": {
+      "type": "string",
+      "enum": [
+        "following_distance", "speeding", "right_of_way", "red_light",
+        "lane_change", "pedestrian_crossing", "overtaking", "distraction",
+        "intoxication", "tire_blowout", "brake_failure", "weather_conditions",
+        "wrong_way", "door_opening", "u_turn", "parking", "road_conditions",
+        "animal_crossing", "load_unsecured", "fatigue"
+      ],
+      "description": "Canonical taxonomy ID for the primary cause (for taxonomy-based accuracy)"
+    },
+    "contributing_factors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "factor": {"type": "string"},
+          "category": {"type": "string"},
+          "severity": {"type": "string", "enum": ["primary", "secondary", "minor"]}
+        },
+        "required": ["factor", "category", "severity"]
+      }
+    },
+    "responsibility": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "party": {"type": "string"},
+          "percentage": {"type": "number", "minimum": 0, "maximum": 100}
+        },
+        "required": ["party", "percentage"]
+      }
+    },
+    "legal_references": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "relevant_stvo": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Relevant StVO sections for retrieval quality evaluation (e.g., §4 StVO)"
+    },
+    "expected_claims": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Factual claims for NLI hallucination evaluation"
+    },
+    "impact_timestamp_s": {
+      "type": "number",
+      "description": "Ground truth impact time in seconds from video start"
+    },
+    "speed_at_impact_kmh": {
+      "type": "number"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "scenario_id": "single_vehicle_005",
+  "category": "single_vehicle",
+  "scenario_text": "Am 7. Januar 2024 gegen 08:30 Uhr kam Fahrzeug A (Ford Transit) auf der B292 auf einer vereisten Brücke ins Rutschen. Die Fahrbahn war durch überfrierende Nässe glatt, obwohl der Rest der Strecke geräumt war. Das Fahrzeug drehte sich einmal und prallte seitlich gegen die Brückenmauer. Die Brücke war nicht als Gefahrenstelle gekennzeichnet. Der Fahrer fuhr mit ca. 60 km/h.",
+  "metadata": {
+    "location_type": "rural",
+    "weather": "ice",
+    "time_of_day": "morning",
+    "road_type": "bundesstrasse",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Glatte Fahrbahn durch überfrierende Nässe auf Brücke",
+    "primary_cause_taxonomy_id": "road_conditions",
+    "accident_type": "single_vehicle",
+    "contributing_factors": [
+      {
+        "factor": "Vereiste Brücke ohne Warnung",
+        "category": "environmental",
+        "severity": "primary"
+      },
+      {
+        "factor": "Nicht angepasste Geschwindigkeit",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 40
+      },
+      {
+        "party": "Straßenbaulastträger",
+        "percentage": 60
+      }
+    ],
+    "relevant_stvo": [
+      "§3 StVO"
+    ],
+    "expected_claims": [
+      "Die Brücke war durch überfrierende Nässe vereist.",
+      "Es gab keine Warnung vor der Gefahrenstelle.",
+      "Der Rest der Strecke war geräumt.",
+      "Der Straßenbaulastträger hat seine Verkehrssicherungspflicht verletzt."
+    ],
+    "legal_references": [
+      "§3 StVO",
+      "§839 BGB",
+      "Art. 34 GG"
+    ]
+  }
+}

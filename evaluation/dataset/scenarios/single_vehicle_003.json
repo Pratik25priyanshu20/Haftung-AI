@@ -1,0 +1,56 @@
+{
+  "scenario_id": "single_vehicle_003",
+  "category": "single_vehicle",
+  "scenario_text": "Am 3. November 2024 gegen 06:00 Uhr kam Fahrzeug A (Volvo V60) auf der L340 bei starkem Regen und Aquaplaning von der Fahrbahn ab. Die Geschwindigkeit betrug ca. 90 km/h bei erlaubten 100 km/h. Das Fahrzeug rutschte über den Grünstreifen und kam in einem Graben zum Stehen. Die Fahrbahn wies Spurrinnen auf, in denen sich Wasser gesammelt hatte. Der Fahrer blieb unverletzt.",
+  "metadata": {
+    "location_type": "rural",
+    "weather": "rain",
+    "time_of_day": "morning",
+    "road_type": "landstrasse",
+    "vehicles_involved": 1
+  },
+  "ground_truth": {
+    "primary_cause": "Aquaplaning durch Nässe und Spurrinnen",
+    "primary_cause_taxonomy_id": "weather_conditions",
+    "accident_type": "single_vehicle",
+    "contributing_factors": [
+      {
+        "factor": "Aquaplaning auf nasser Fahrbahn",
+        "category": "environmental",
+        "severity": "primary"
+      },
+      {
+        "factor": "Spurrinnen mit Wasseransammlung",
+        "category": "environmental",
+        "severity": "secondary"
+      },
+      {
+        "factor": "Geschwindigkeit nicht den Verhältnissen angepasst",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 60
+      },
+      {
+        "party": "Straßenbaulastträger",
+        "percentage": 40
+      }
+    ],
+    "relevant_stvo": [
+      "§3 StVO"
+    ],
+    "expected_claims": [
+      "Das Fahrzeug geriet in Aquaplaning.",
+      "Spurrinnen mit Wasseransammlungen waren vorhanden.",
+      "Die Geschwindigkeit hätte den Witterungsverhältnissen angepasst werden müssen."
+    ],
+    "legal_references": [
+      "§3 Abs. 1 StVO",
+      "§839 BGB"
+    ]
+  }
+}

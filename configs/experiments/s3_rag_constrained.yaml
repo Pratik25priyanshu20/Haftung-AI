@@ -1,0 +1,21 @@
+# S3: RAG + Constraints — Full system with claim-level validation
+
+variant: "S3"
+description: "RAG-augmented with claim-level constraints. Every claim must be evidence-grounded."
+
+rag:
+  enabled: true
+
+constraints:
+  enabled: true
+  require_evidence_for_claims: true
+  min_claim_confidence: 0.5
+  max_unsupported_claims: 0
+
+agents:
+  vision: true
+  telemetry: true
+  evidence: true
+  contradiction: true
+  causation: true
+  report: true

@@ -1,0 +1,51 @@
+{
+  "scenario_id": "side_collision_002",
+  "category": "side_collision",
+  "scenario_text": "Am 18. September 2024 um 09:00 Uhr kam es an der Kreuzung Hauptstraße/Bahnhofstraße zu einer Seitenkollision. Fahrzeug A (Skoda Octavia) bog von der Hauptstraße nach rechts in die Bahnhofstraße ab. Dabei übersah der Fahrer einen geradeaus fahrenden Radfahrer (Beteiligter B), der auf dem Radweg parallel zur Bahnhofstraße fuhr. Es kam zur Kollision im Kreuzungsbereich. Der Radfahrer stürzte und verletzte sich am Arm. Am PKW entstand leichter Schaden am vorderen Kotflügel.",
+  "metadata": {
+    "location_type": "urban",
+    "weather": "clear",
+    "time_of_day": "morning",
+    "road_type": "innerorts",
+    "vehicles_involved": 2
+  },
+  "ground_truth": {
+    "primary_cause": "Vorfahrtsverletzung gegenüber Radfahrer beim Abbiegen",
+    "primary_cause_taxonomy_id": "right_of_way",
+    "accident_type": "side_collision",
+    "contributing_factors": [
+      {
+        "factor": "Missachtung des Vorrangs des Radfahrers",
+        "category": "human_error",
+        "severity": "primary"
+      },
+      {
+        "factor": "Fehlender Schulterblick beim Abbiegen",
+        "category": "human_error",
+        "severity": "secondary"
+      }
+    ],
+    "responsibility": [
+      {
+        "party": "Fahrzeug A",
+        "percentage": 100
+      },
+      {
+        "party": "Radfahrer B",
+        "percentage": 0
+      }
+    ],
+    "relevant_stvo": [
+      "§9 StVO",
+      "§8 StVO"
+    ],
+    "expected_claims": [
+      "Der Fahrer übersah den Radfahrer beim Rechtsabbiegen.",
+      "Der Radfahrer hatte Vorrang auf dem Radweg.",
+      "Es wurde kein Schulterblick durchgeführt."
+    ],
+    "legal_references": [
+      "§9 Abs. 3 StVO"
+    ]
+  }
+}
