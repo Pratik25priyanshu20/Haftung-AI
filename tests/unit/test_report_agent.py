@@ -41,15 +41,15 @@ def test_report_agent_generates_report(mock_groq):
     from haftung_ai.agents.report_agent import ReportAgent
 
     mock_groq.invoke_json.return_value = {
-        "unfallhergang": "Der Unfall war ein Auffahrunfall.",
-        "unfallursache": "Zu geringer Abstand",
-        "haftungsverteilung": {"ego": 70, "other": 30},
+        "accident_sequence": "The accident was a rear-end collision.",
+        "accident_cause": "Following too closely",
+        "liability_distribution": "ego: 70%, other: 30%",
     }
     agent = ReportAgent()
     state = _base_state()
     result = agent(state)
     assert "report" in result
-    assert result["report"]["unfallhergang"] == "Der Unfall war ein Auffahrunfall."
+    assert result["report"]["accident_sequence"] == "The accident was a rear-end collision."
 
 
 def test_report_agent_no_causation(mock_groq):
@@ -69,4 +69,4 @@ def test_report_agent_handles_error(mock_groq):
     state = _base_state()
     result = agent(state)
     assert "report" in result
-    assert "fehlgeschlagen" in result["report"]["unfallhergang"]
+    assert "failed" in result["report"]["accident_sequence"].lower()

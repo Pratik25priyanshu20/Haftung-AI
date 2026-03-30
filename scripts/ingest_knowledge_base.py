@@ -38,6 +38,7 @@ def main() -> None:
     if args.recreate:
         logger.info("Recreating vector store collection...")
         ingester.vectorstore.client.delete_collection(settings.QDRANT_COLLECTION)
+        ingester.vectorstore.ensure_collection(ingester.embedder.dimension)
 
     # Ingest each source type
     source_types = ["stvo", "case_law", "insurance_guidelines"]
@@ -52,8 +53,7 @@ def main() -> None:
         logger.info("Ingesting %s from %s...", source_type, source_dir)
         chunks = ingester.ingest_directory(
             source_dir,
-            source_type=source_type,
-            batch_size=args.batch_size,
+            source_name=source_type,
         )
         total_chunks += chunks
         logger.info("  Ingested %d chunks from %s", chunks, source_type)

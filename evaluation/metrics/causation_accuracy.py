@@ -1,4 +1,12 @@
-"""Primary cause match metric."""
+"""Primary cause match metric (legacy — use cause_taxonomy.py instead).
+
+.. deprecated::
+    This module uses substring matching which is not suitable for rigorous
+    evaluation. Use ``causation_accuracy_taxonomy`` from
+    ``evaluation.metrics.cause_taxonomy`` as the primary metric. This module
+    is retained for backwards compatibility and is reported as
+    ``causation_accuracy_fuzzy`` in aggregate results.
+"""
 from __future__ import annotations
 
 
@@ -6,6 +14,10 @@ def causation_accuracy(predictions: list[dict], ground_truths: list[dict]) -> fl
     """Compute fraction of predictions matching ground truth primary cause.
 
     Uses normalized string matching (case-insensitive, stripped).
+
+    .. deprecated::
+        Use ``causation_accuracy_taxonomy`` instead. This metric is reported
+        as ``causation_accuracy_fuzzy`` in aggregate output.
     """
     if not predictions or not ground_truths:
         return 0.0

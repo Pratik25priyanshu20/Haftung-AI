@@ -7,7 +7,7 @@ import pytest
 
 @pytest.fixture
 def mock_st():
-    with patch("haftung_ai.rag.embeddings.SentenceTransformer") as mock:
+    with patch("sentence_transformers.SentenceTransformer") as mock:
         model = MagicMock()
         model.encode.return_value = np.random.randn(3, 768).astype(np.float32)
         model.get_sentence_embedding_dimension.return_value = 768

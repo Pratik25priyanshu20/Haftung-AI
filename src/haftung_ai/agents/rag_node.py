@@ -4,7 +4,6 @@ from __future__ import annotations
 import logging
 import time
 
-from haftung_ai.rag.retrieval import AdaptiveRetriever
 from haftung_ai.types.state import HaftungState
 
 logger = logging.getLogger(__name__)
@@ -17,12 +16,14 @@ class RAGRetrievalNode:
     data, calls AdaptiveRetriever, and writes results to state.
     """
 
-    def __init__(self, retriever: AdaptiveRetriever | None = None):
-        self._retriever = retriever
+    def __init__(self):
+        self._retriever = None
 
     @property
-    def retriever(self) -> AdaptiveRetriever:
+    def retriever(self):
         if self._retriever is None:
+            from haftung_ai.rag.retrieval import AdaptiveRetriever
+
             self._retriever = AdaptiveRetriever()
         return self._retriever
 
@@ -30,32 +31,29 @@ class RAGRetrievalNode:
         """Build retrieval query from available state information."""
         parts: list[str] = []
 
-        # Prefer scenario_text for text-only mode
         scenario_text = state.get("scenario_text", "")
         if scenario_text:
-            # Use first 500 chars as query — enough for retrieval, avoids token limits
             parts.append(scenario_text[:500])
         else:
-            # Fall back to vision/telemetry summaries
             tracks = state.get("tracks", [])
             if tracks:
                 classes = set(t.get("class_name", "") for t in tracks)
-                parts.append(f"Unfall mit: {', '.join(c for c in classes if c)}")
+                parts.append(f"Accident involving: {', '.join(c for c in classes if c)}")
 
             summary = state.get("telemetry_summary", {})
             if summary:
                 max_speed = summary.get("max_speed_kmh")
                 if max_speed:
-                    parts.append(f"Geschwindigkeit: {max_speed} km/h")
+                    parts.append(f"Speed: {max_speed} km/h")
                 if summary.get("emergency_braking"):
-                    parts.append("Notbremsung")
+                    parts.append("Emergency braking")
 
             impact_frame = state.get("impact_frame")
             if impact_frame is not None:
-                parts.append("Kollision erkannt")
+                parts.append("Collision detected")
 
         if not parts:
-            parts.append("Verkehrsunfall Haftung StVO")
+            parts.append("Traffic accident liability StVO")
 
         return " ".join(parts)
 

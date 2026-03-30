@@ -31,15 +31,12 @@ class GroqClient:
         self.max_retries = max_retries if max_retries is not None else settings.GROQ_MAX_RETRIES
         self._rate_limit_rpm = settings.GROQ_RATE_LIMIT_RPM
         self._last_call_time = 0.0
-        self._client = None
 
-    @property
-    def client(self) -> Any:
-        if self._client is None:
-            from groq import Groq
+    def _new_client(self) -> Any:
+        """Create a fresh Groq client to avoid stale httpx connections."""
+        from groq import Groq
 
-            self._client = Groq(api_key=self.api_key)
-        return self._client
+        return Groq(api_key=self.api_key)
 
     def _rate_limit(self) -> None:
         if self._rate_limit_rpm <= 0:
@@ -60,7 +57,8 @@ class GroqClient:
         for attempt in range(self.max_retries + 1):
             try:
                 self._rate_limit()
-                response = self.client.chat.completions.create(
+                client = self._new_client()
+                response = client.chat.completions.create(
                     model=self.model,
                     messages=messages,
                     temperature=self.temperature,
@@ -85,7 +83,8 @@ class GroqClient:
         for attempt in range(self.max_retries + 1):
             try:
                 self._rate_limit()
-                response = self.client.chat.completions.create(
+                client = self._new_client()
+                response = client.chat.completions.create(
                     model=self.model,
                     messages=messages,
                     temperature=self.temperature,
@@ -121,7 +120,8 @@ class GroqClient:
         messages.append({"role": "user", "content": prompt})
 
         self._rate_limit()
-        response = self.client.chat.completions.create(
+        client = self._new_client()
+        response = client.chat.completions.create(
             model=self.model,
             messages=messages,
             temperature=self.temperature,
@@ -134,13 +134,24 @@ class GroqClient:
                 yield chunk.choices[0].delta.content
 
     def judge(self, prompt: str) -> str:
-        """Deterministic evaluation call (temperature=0)."""
+        """Deterministic evaluation call (temperature=0) with retry logic."""
         messages = [{"role": "user", "content": prompt}]
-        self._rate_limit()
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            temperature=0.0,
-            max_tokens=self.max_tokens,
-        )
-        return response.choices[0].message.content.strip()
+
+        for attempt in range(self.max_retries + 1):
+            try:
+                self._rate_limit()
+                client = self._new_client()
+                response = client.chat.completions.create(
+                    model=self.model,
+                    messages=messages,
+                    temperature=0.0,
+                    max_tokens=self.max_tokens,
+                )
+                return response.choices[0].message.content.strip()
+            except Exception as e:
+                logger.warning("Groq judge attempt %d failed: %s", attempt + 1, e)
+                if attempt == self.max_retries:
+                    raise
+                time.sleep(2**attempt)
+
+        raise RuntimeError("Groq judge call failed after all retries")

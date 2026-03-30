@@ -7,6 +7,13 @@ from haftung_ai.types.state import HaftungState, validate_state
 
 logger = logging.getLogger(__name__)
 
+SYNTHETIC_DATA_NOTICE = (
+    "Telemetry data is fully synthetic (parametric speed/braking/steering "
+    "profiles with Gaussian noise). CAN IDs follow Haftung_AI internal "
+    "conventions and do not correspond to production vehicle DBC files. "
+    "See README.md § Limitations."
+)
+
 
 class TelemetryAgent:
     """Processes CAN bus logs into speed profiles, braking events, and ego states."""
@@ -70,6 +77,8 @@ class TelemetryAgent:
             "emergency_braking": any(a["severity"] == "severe" for a in braking_anomalies),
             "num_braking_events": len(profile.braking_events),
         }
+
+        state["synthetic_data_notice"] = SYNTHETIC_DATA_NOTICE
 
         logger.info("TelemetryAgent: %d speed records, %d braking events", len(speed_records), len(profile.braking_events))
         return state

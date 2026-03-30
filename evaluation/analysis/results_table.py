@@ -47,6 +47,7 @@ LOWER_IS_BETTER = {
 # Main metrics for Table 1
 TABLE1_METRICS = [
     "causation_accuracy_taxonomy",
+    "causation_accuracy_fuzzy",
     "factors_f1",
     "responsibility_mae",
     "nli_hallucination_rate",
@@ -57,7 +58,8 @@ TABLE1_METRICS = [
 ]
 
 TABLE1_LABELS = {
-    "causation_accuracy_taxonomy": "Causation Accuracy (Taxonomy)",
+    "causation_accuracy_taxonomy": "Causation Accuracy [PRIMARY]",
+    "causation_accuracy_fuzzy": "Causation Accuracy (fuzzy) [legacy]",
     "factors_f1": "Contributing Factors F1",
     "responsibility_mae": "Responsibility MAE",
     "nli_hallucination_rate": "NLI Hallucination Rate",

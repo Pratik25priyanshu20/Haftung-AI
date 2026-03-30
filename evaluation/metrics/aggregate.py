@@ -32,8 +32,8 @@ def aggregate_metrics(
     """
     results: dict[str, Any] = {}
 
-    # --- Original metrics ---
-    results["causation_accuracy"] = causation_accuracy(predictions, ground_truths)
+    # --- Legacy fuzzy string matching (kept for backwards compatibility) ---
+    results["causation_accuracy_fuzzy"] = causation_accuracy(predictions, ground_truths)
     results["responsibility_mae"] = responsibility_mae(predictions, ground_truths)
 
     f1_result = factors_f1(predictions, ground_truths)
@@ -43,18 +43,16 @@ def aggregate_metrics(
 
     results["hallucination_rate"] = hallucination_rate(predictions)
 
-    confidences = [p.get("confidence", 0.5) for p in predictions]
-    accuracies = [
-        p.get("primary_cause", "").lower() == g.get("primary_cause", "").lower()
-        for p, g in zip(predictions, ground_truths)
-    ]
-    results["ece"] = expected_calibration_error(confidences, accuracies)
-    results["brier_score"] = brier_score(confidences, accuracies)
-
-    # --- Taxonomy-based causation accuracy ---
+    # --- Taxonomy-based causation accuracy [PRIMARY] ---
     taxonomy_result = causation_accuracy_taxonomy(predictions, ground_truths)
     results["causation_accuracy_taxonomy"] = taxonomy_result["exact_match"]
     results["causation_per_category"] = taxonomy_result["per_category"]
+
+    # --- Calibration (ECE / Brier) using taxonomy match as correctness ---
+    confidences = [p.get("confidence", 0.5) for p in predictions]
+    taxonomy_accuracies = taxonomy_result["per_item"]
+    results["ece"] = expected_calibration_error(confidences, taxonomy_accuracies)
+    results["brier_score"] = brier_score(confidences, taxonomy_accuracies)
 
     # --- Retrieval quality (S2/S3 only) ---
     has_retrieval = any(p.get("retrieved_chunks") for p in predictions)
@@ -92,5 +90,19 @@ def aggregate_metrics(
         stability = cause_stability(rerun_results)
         results["avg_entropy"] = stability["avg_entropy"]
         results["consistency_rate"] = stability["consistency_rate"]
+
+    # --- Metadata ---
+    results["_metric_notes"] = {
+        "causation_accuracy_taxonomy": "[PRIMARY] Taxonomy-based cause matching via keyword classifier (cause_taxonomy.py).",
+        "causation_accuracy_fuzzy": "[legacy] Substring-based string matching. Retained for backwards compatibility only.",
+        "ece": "Expected Calibration Error computed against taxonomy match correctness.",
+        "brier_score": "Brier score computed against taxonomy match correctness.",
+    }
+    results["_synthetic_data_notice"] = (
+        "All telemetry and scenario data used in this evaluation is fully "
+        "synthetic. CAN bus logs are generated from parametric models "
+        "(scripts/generate_synthetic_can.py). Text scenarios are authored "
+        "templates. No real accident data is used. See README.md § Limitations."
+    )
 
     return results

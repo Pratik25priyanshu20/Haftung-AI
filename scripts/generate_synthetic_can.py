@@ -1,4 +1,13 @@
-"""Generate synthetic CAN bus data from Autobahn-style scenarios."""
+"""Generate synthetic CAN bus data from Autobahn-style scenarios.
+
+NOTE: All data produced by this script is **fully synthetic**. Speed profiles,
+braking events, and steering inputs are generated from parametric models with
+Gaussian noise — they do not originate from real vehicle measurements. CAN IDs
+and encoding conventions follow the Haftung_AI internal specification
+(0x100 = speed at 0.1 km/h resolution) and do not correspond to any production
+vehicle DBC file. Results derived from this data should be interpreted
+accordingly. See README.md § Limitations for details.
+"""
 from __future__ import annotations
 
 import csv
@@ -82,9 +91,9 @@ SCENARIOS: dict[str, ScenarioParams] = {
     ),
 }
 
-# CAN IDs for different signal types
+# CAN IDs for different signal types (must match telemetry_agent.py conventions)
 CAN_IDS = {
-    "speed": "0x201",
+    "speed": "0x100",
     "brake": "0x301",
     "steering": "0x180",
     "acceleration": "0x202",
@@ -136,8 +145,8 @@ def generate_steering_profile(scenario: ScenarioParams, dt: float) -> list[float
 
 
 def speed_to_can_data(speed_kmh: float) -> str:
-    """Encode speed as 2-byte hex CAN data."""
-    speed_raw = int(max(0, speed_kmh) * 100)
+    """Encode speed as 2-byte hex CAN data (0.1 km/h resolution)."""
+    speed_raw = int(max(0, speed_kmh) * 10)
     speed_raw = min(speed_raw, 0xFFFF)
     return f"{(speed_raw >> 8) & 0xFF:02X} {speed_raw & 0xFF:02X} 00 00 00 00 00 00"
 

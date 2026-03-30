@@ -118,6 +118,10 @@ def generate_report(results_dir: Path, text_mode: bool = False) -> str:
 
     lines: list[str] = []
     lines.append("# System Comparison Report\n")
+    lines.append("> **Note:** `causation_accuracy_taxonomy` is the canonical primary metric. "
+                 "It uses a keyword-based taxonomy classifier (`cause_taxonomy.py`) to map "
+                 "free-text causes to 20 canonical IDs. The legacy `causation_accuracy_fuzzy` "
+                 "metric (substring matching) is retained for reference only.\n")
     lines.append("## Metrics\n")
     lines.append(format_comparison_table(metrics))
     lines.append("")

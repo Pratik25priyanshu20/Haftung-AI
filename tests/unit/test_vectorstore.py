@@ -6,7 +6,7 @@ import pytest
 
 @pytest.fixture
 def mock_qdrant():
-    with patch("haftung_ai.rag.vectorstore.QdrantClient") as mock:
+    with patch("qdrant_client.QdrantClient") as mock:
         client = MagicMock()
         mock.return_value = client
         yield client

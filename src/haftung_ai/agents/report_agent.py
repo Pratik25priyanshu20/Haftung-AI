@@ -1,4 +1,4 @@
-"""Report Agent — generates German accident report (Unfallbericht)."""
+"""Report Agent — generates accident report."""
 from __future__ import annotations
 
 import logging
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class ReportAgent:
-    """Generates structured German accident report from causation analysis."""
+    """Generates structured accident report from causation analysis."""
 
     def __init__(self):
         self.llm = GroqClient()
@@ -35,34 +35,34 @@ class ReportAgent:
             logger.error("ReportAgent failed: %s", e)
             state.setdefault("errors", []).append(f"ReportAgent: {e}")
             state["report"] = {
-                "unfallhergang": "Berichterstellung fehlgeschlagen.",
-                "unfallursache": str(causation.get("primary_cause", "Unbekannt")),
+                "accident_sequence": "Report generation failed.",
+                "accident_cause": str(causation.get("primary_cause", "Unknown")),
             }
 
         return state
 
     def _format_causation(self, causation: dict) -> str:
         parts = [
-            f"Unfalltyp: {causation.get('accident_type', 'Unbekannt')}",
-            f"Primäre Ursache: {causation.get('primary_cause', 'Unbekannt')}",
+            f"Accident type: {causation.get('accident_type', 'Unknown')}",
+            f"Primary cause: {causation.get('primary_cause', 'Unknown')}",
         ]
         factors = causation.get("contributing_factors", [])
         if factors:
-            parts.append("Beitragende Faktoren:")
+            parts.append("Contributing factors:")
             for f in factors:
                 if isinstance(f, dict):
                     parts.append(f"  - {f.get('factor', 'N/A')} ({f.get('severity', '')})")
         responsibility = causation.get("responsibility", [])
         if responsibility:
-            parts.append("Haftungsverteilung:")
+            parts.append("Liability distribution:")
             for r in responsibility:
                 if isinstance(r, dict):
                     parts.append(f"  - {r.get('party', 'N/A')}: {r.get('percentage', 0)}%")
         return "\n".join(parts)
 
     def _format_scene(self, state: HaftungState) -> str:
-        return f"Frames: {state.get('frames_processed', 'N/A')}, Aufprall: Frame {state.get('impact_frame', 'N/A')}"
+        return f"Frames: {state.get('frames_processed', 'N/A')}, Impact: Frame {state.get('impact_frame', 'N/A')}"
 
     def _format_telemetry(self, state: HaftungState) -> str:
         summary = state.get("telemetry_summary", {})
-        return f"Max. Geschwindigkeit: {summary.get('max_speed_kmh', 'N/A')} km/h"
+        return f"Max speed: {summary.get('max_speed_kmh', 'N/A')} km/h"

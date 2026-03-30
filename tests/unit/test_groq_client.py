@@ -22,12 +22,10 @@ def mock_settings():
 
 @pytest.fixture
 def mock_groq_client(mock_settings):
-    with patch("haftung_ai.llm.client.Groq") as mock_groq_cls:
+    with patch("groq.Groq") as mock_groq_cls:
         groq_instance = MagicMock()
         mock_groq_cls.return_value = groq_instance
         client = GroqClient()
-        # Force client creation
-        _ = client.client
         yield client, groq_instance
 
 

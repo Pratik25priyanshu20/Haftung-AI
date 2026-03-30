@@ -43,8 +43,8 @@ class PDFGenerator:
 
             HTML(string=html).write_pdf(str(output_path))
             logger.info("PDF generated: %s", output_path)
-        except ImportError:
-            # Fallback: save HTML if weasyprint not available
+        except (ImportError, OSError):
+            # Fallback: save HTML if weasyprint or system libs not available
             html_path = output_path.with_suffix(".html")
             html_path.write_text(html, encoding="utf-8")
             logger.warning("WeasyPrint not available, saved HTML: %s", html_path)

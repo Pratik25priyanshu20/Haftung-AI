@@ -125,6 +125,7 @@ def causation_accuracy_taxonomy(
 
     total = min(len(predictions), len(ground_truths))
     correct = 0
+    per_item: list[bool] = []
     category_correct: dict[str, int] = {}
     category_total: dict[str, int] = {}
 
@@ -140,7 +141,9 @@ def causation_accuracy_taxonomy(
         category = gt.get("category", gt.get("accident_type", "unknown"))
         category_total[category] = category_total.get(category, 0) + 1
 
-        if pred_taxonomy == gt_taxonomy:
+        match = pred_taxonomy == gt_taxonomy
+        per_item.append(match)
+        if match:
             correct += 1
             category_correct[category] = category_correct.get(category, 0) + 1
 
@@ -153,5 +156,6 @@ def causation_accuracy_taxonomy(
     return {
         "exact_match": correct / total if total > 0 else 0.0,
         "per_category": per_category,
+        "per_item": per_item,
         "n": total,
     }

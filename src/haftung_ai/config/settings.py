@@ -42,6 +42,9 @@ class Settings(BaseSettings):
     # --- Validation ---
     VALIDATION_THRESHOLD: float = 0.7
     GAP_THRESHOLD: float = 0.3
+    CONFIDENCE_W_LLM: float = 0.4
+    CONFIDENCE_W_COVERAGE: float = 0.3
+    CONFIDENCE_W_BASE: float = 0.3
 
     # --- Evidence & Contradiction ---
     EVIDENCE_CLUSTER_THRESHOLD: float = 0.85

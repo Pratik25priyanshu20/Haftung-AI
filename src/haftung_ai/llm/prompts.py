@@ -3,161 +3,181 @@ from __future__ import annotations
 
 # --- Causation Agent Prompts ---
 
-CAUSATION_SYSTEM_PROMPT = """Du bist ein Unfallanalytiker für die automatisierte Unfallursachenanalyse.
-Deine Aufgabe ist die Bestimmung der Unfallursache basierend auf Dashcam-Video-Analyse und CAN-Bus-Telemetrie.
-Antworte ausschließlich auf Basis der bereitgestellten Daten. Erfinde keine Fakten."""
+CAUSATION_SYSTEM_PROMPT = """You are an accident analyst for automated accident causation analysis.
+Your task is to determine the cause of an accident based on dashcam video analysis and CAN bus telemetry.
+Respond exclusively based on the provided data. Do not fabricate any facts.
+All responses must be in English, even if the input scenario is in German."""
 
-CAUSATION_S1_PROMPT = """Analysiere den folgenden Unfall basierend auf den Wahrnehmungs- und Telemetriedaten.
-Kein Zugang zu rechtlichen Referenzen verfügbar.
+CAUSATION_S1_PROMPT = """Analyze the following accident based on the perception and telemetry data.
+No access to legal references available.
 
-## Szene
+## Scene
 {scene_description}
 
-## Telemetrie
+## Telemetry
 {telemetry_summary}
 
-## Aufprall
+## Impact
 {impact_details}
 
-Bestimme:
-1. Unfalltyp (rear_end, side_collision, head_on, intersection, pedestrian, single_vehicle)
-2. Primäre Unfallursache
-3. Beitragende Faktoren mit Schweregrad
-4. Haftungsverteilung in Prozent
-5. Konfidenz (0.0-1.0)
+Determine:
+1. Accident type (rear_end, side_collision, head_on, intersection, pedestrian, single_vehicle)
+2. Primary cause of the accident
+3. Contributing factors with severity
+4. Liability distribution in percentages
+5. Confidence (0.0-1.0)
 
-Antwort als JSON."""
+Respond as JSON with EXACTLY these English keys:
+{{"accident_type": "...", "primary_cause": "...", "contributing_factors": [{{"factor": "...", "category": "...", "severity": "primary|secondary|minor", "legal_reference": ""}}], "responsibility": [{{"party": "...", "percentage": 0, "rationale": "..."}}], "confidence": 0.0, "claims": [{{"statement": "...", "source_type": "inference", "confidence": 0.0}}], "legal_references": [], "reasoning": "..."}}
 
-CAUSATION_S2_PROMPT = """Analysiere den folgenden Unfall. Du hast Zugang zu relevantem deutschen Verkehrsrecht.
+IMPORTANT: All text values must be in English. Use "Vehicle A", "Vehicle B", "Pedestrian", etc. for party names."""
 
-## Szene
+CAUSATION_S2_PROMPT = """Analyze the following accident. You have access to relevant German traffic law (StVO).
+
+## Scene
 {scene_description}
 
-## Telemetrie
+## Telemetry
 {telemetry_summary}
 
-## Aufprall
+## Impact
 {impact_details}
 
-## Relevante Rechtsnormen
+## Relevant Legal Provisions
 {legal_context}
 
-Bestimme:
-1. Unfalltyp
-2. Primäre Unfallursache mit Verweis auf relevante StVO-Paragraphen
-3. Beitragende Faktoren mit rechtlicher Grundlage
-4. Haftungsverteilung basierend auf Rechtsprechung
-5. Konfidenz (0.0-1.0)
-6. Liste aller Behauptungen mit Quellenangabe
+Determine:
+1. Accident type
+2. Primary cause with reference to relevant StVO sections
+3. Contributing factors with legal basis
+4. Liability distribution based on case law
+5. Confidence (0.0-1.0)
+6. List of all claims with source attribution
 
-Antwort als JSON."""
+Respond as JSON with EXACTLY these English keys:
+{{"accident_type": "...", "primary_cause": "...", "contributing_factors": [{{"factor": "...", "category": "...", "severity": "primary|secondary|minor", "legal_reference": "§X StVO"}}], "responsibility": [{{"party": "...", "percentage": 0, "rationale": "..."}}], "confidence": 0.0, "claims": [{{"statement": "...", "source_type": "rag|inference", "source_id": "...", "confidence": 0.0}}], "legal_references": ["§X StVO"], "reasoning": "..."}}
 
-CAUSATION_S3_PROMPT = """Analysiere den folgenden Unfall mit vollständiger Evidenzprüfung.
-JEDE Behauptung muss durch konkrete Beweise gestützt sein.
-Ungestützte Behauptungen sind NICHT erlaubt.
+IMPORTANT: All text values must be in English. Use "Vehicle A", "Vehicle B", "Pedestrian", etc. for party names. Legal references (e.g. §4 StVO) should remain in their original form."""
 
-## Szene
+CAUSATION_S3_PROMPT = """Analyze the following accident with full evidence verification.
+EVERY claim must be supported by concrete evidence.
+Unsupported claims are NOT allowed.
+
+## Scene
 {scene_description}
 
-## Telemetrie
+## Telemetry
 {telemetry_summary}
 
-## Aufprall
+## Impact
 {impact_details}
 
-## Relevante Rechtsnormen
+## Relevant Legal Provisions
 {legal_context}
 
-## Beweismittel
+## Evidence
 {evidence_summary}
 
-Für JEDE Behauptung angeben:
-- Aussage
-- Quellentyp (vision/telemetry/rag/inference)
-- Quell-ID (Frame-Nr, CAN-Zeitstempel, Chunk-ID)
-- Konfidenz
+For EVERY claim, specify:
+- Statement
+- Source type (vision/telemetry/rag/inference)
+- Source ID (frame number, CAN timestamp, chunk ID)
+- Confidence
 
-Bestimme:
-1. Unfalltyp
-2. Primäre Unfallursache (mit Beweisquelle)
-3. Beitragende Faktoren (jeweils mit Beleg)
-4. Haftungsverteilung (mit rechtlicher Begründung)
-5. Konfidenz (0.0-1.0)
-6. Vollständige Behauptungsliste mit Quellenangaben
+Determine:
+1. Accident type
+2. Primary cause (with evidence source)
+3. Contributing factors (each with supporting evidence)
+4. Liability distribution (with legal reasoning)
+5. Confidence (0.0-1.0)
+6. Complete list of claims with source attribution
 
-Antwort als JSON."""
+Respond as JSON with EXACTLY these English keys:
+{{"accident_type": "...", "primary_cause": "...", "contributing_factors": [{{"factor": "...", "category": "...", "severity": "primary|secondary|minor", "legal_reference": "§X StVO"}}], "responsibility": [{{"party": "...", "percentage": 0, "rationale": "..."}}], "confidence": 0.0, "claims": [{{"statement": "...", "source_type": "vision|telemetry|rag|inference", "source_id": "...", "confidence": 0.0}}], "legal_references": ["§X StVO"], "reasoning": "..."}}
+
+IMPORTANT: All text values must be in English. Use "Vehicle A", "Vehicle B", "Pedestrian", etc. for party names. Legal references (e.g. §4 StVO) should remain in their original form."""
 
 # --- Evidence Agent Prompts ---
 
-EVIDENCE_EXTRACTION_PROMPT = """Du bist ein System zur Beweisextraktion für Unfallanalyse.
+EVIDENCE_EXTRACTION_PROMPT = """You are an evidence extraction system for accident analysis.
 
-Gegeben:
-- Eine Unfallbeschreibung
-- Abgerufene Rechtstexte/Dokumente
+Given:
+- An accident description
+- Retrieved legal texts/documents
 
-Aufgabe:
-- Extrahiere NUR Aussagen, die direkt zur Unfallanalyse beitragen
-- Jede Aussage MUSS durch ein einzelnes Dokument belegt sein
-- Füge KEIN externes Wissen hinzu
+Task:
+- Extract ONLY statements that directly contribute to the accident analysis
+- Each statement MUST be supported by a single document
+- Do NOT add external knowledge
 
-Antworte mit JSON:
+Respond with JSON:
 [
-  {{"chunk_id": "<id>", "statement": "<Aussage aus diesem Dokument>"}}
+  {{"chunk_id": "<id>", "statement": "<statement from this document in English>"}}
 ]
 
-Leere Liste [] falls keine relevanten Beweise vorhanden."""
+Empty list [] if no relevant evidence found.
+
+IMPORTANT: All extracted statements must be in English."""
 
 # --- Contradiction Agent Prompt ---
 
-CONTRADICTION_PROMPT = """Analysiere zwei Aussagen auf logische Widersprüche.
+CONTRADICTION_PROMPT = """Analyze two statements for logical contradictions.
 
-Aussage A: {stmt_a}
+Statement A: {stmt_a}
 
-Aussage B: {stmt_b}
+Statement B: {stmt_b}
 
-Widersprechen sich diese Aussagen?
+Do these statements contradict each other?
 
-Antworte NUR mit JSON:
-{{"contradiction": true/false, "severity": "direct"|"partial"|"tension"|"none", "explanation": "kurze Erklärung"}}"""
+Respond ONLY with JSON:
+{{"contradiction": true/false, "severity": "direct"|"partial"|"tension"|"none", "explanation": "brief explanation in English"}}"""
 
 # --- Report Agent Prompts ---
 
-REPORT_SYSTEM_PROMPT = """Du bist ein technischer Sachverständiger für Verkehrsunfälle.
-Erstelle einen professionellen deutschen Unfallbericht (Unfallbericht).
-Verwende Fachsprache und beziehe dich auf relevante Paragraphen der StVO."""
+REPORT_SYSTEM_PROMPT = """You are a technical expert for traffic accidents.
+Create a professional accident report in English.
+Reference relevant sections of the German Road Traffic Regulations (StVO) where applicable."""
 
-REPORT_GENERATION_PROMPT = """Erstelle einen vollständigen Unfallbericht basierend auf der folgenden Analyse:
+REPORT_GENERATION_PROMPT = """Create a complete accident report based on the following analysis:
 
-## Unfallanalyse
+## Accident Analysis
 {causation_analysis}
 
-## Szenendiagramm
+## Scene Diagram
 {scene_description}
 
-## Telemetriedaten
+## Telemetry Data
 {telemetry_summary}
 
-Der Bericht soll folgende Abschnitte enthalten:
-1. Unfallhergang (detaillierte Beschreibung des Ablaufs)
-2. Unfallursache (technische und menschliche Faktoren)
-3. Haftungsverteilung (prozentuale Zuordnung mit Begründung)
-4. Schadenbeschreibung
-5. Beweismittel (Liste der verwendeten Datenquellen)
-6. Rechtliche Grundlagen (relevante StVO-Paragraphen und Rechtsprechung)
+The report should contain the following sections:
+1. Accident Sequence (detailed description of events)
+2. Accident Cause (technical and human factors)
+3. Liability Distribution (percentage allocation with reasoning)
+4. Damage Description
+5. Evidence (list of data sources used)
+6. Legal Basis (relevant StVO sections and case law)
 
-Antworte als strukturiertes JSON."""
+Respond as JSON with EXACTLY these keys:
+{{"accident_sequence": "...", "accident_cause": "...", "liability_distribution": "...", "damage_description": "...", "evidence": ["..."], "legal_basis": "..."}}"""
 
 # --- Validation Prompt ---
 
-VALIDATION_PROMPT = """Du validierst eine KI-generierte Unfallanalyse.
+VALIDATION_PROMPT = """You are validating an AI-generated accident analysis against four criteria.
 
-Kontext (Beweismittel):
+## Context (Evidence)
 {context}
 
-Analyse:
+## Analysis
 {analysis}
 
-Ist die Analyse vollständig durch die Beweismittel gestützt?
-Antworte NUR mit einer Zahl zwischen 0.0 und 1.0:
-1.0 = vollständig gestützt
-0.0 = halluziniert oder ungestützt"""
+## Evaluation Criteria
+
+Rate the analysis on a scale of 0.0 to 1.0 for each of the following four criteria:
+
+1. **factual_coverage** — Are all factual claims supported by the provided evidence? (0.0 = no support, 1.0 = all claims supported)
+2. **legal_correctness** — Are the cited legal provisions (StVO sections, case law) correct and applicable? (0.0 = wrong/missing provisions, 1.0 = all provisions correct)
+3. **causal_logic** — Is the causal chain between cause and accident logically sound? (0.0 = contradictory/illogical, 1.0 = sound)
+4. **completeness** — Does the analysis cover all relevant aspects (accident type, cause, liability, factors)? (0.0 = incomplete, 1.0 = complete)
+
+Respond EXCLUSIVELY with a JSON object in this format:
+{{"factual_coverage": 0.0, "legal_correctness": 0.0, "causal_logic": 0.0, "completeness": 0.0}}"""

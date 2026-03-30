@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import time
 from pathlib import Path
 from typing import Any
@@ -11,6 +12,36 @@ from haftung_ai.agents.orchestrator import build_graph, build_text_graph
 from haftung_ai.types.state import HaftungState
 
 logger = logging.getLogger(__name__)
+
+
+def _apply_weight_override(weight_override: dict[str, float] | None) -> None:
+    """Apply confidence weight overrides via environment variables.
+
+    Clears the settings cache so changes take effect immediately.
+    """
+    if not weight_override:
+        return
+    for key, value in weight_override.items():
+        env_key = key.upper()
+        if not env_key.startswith("CONFIDENCE_W_"):
+            env_key = f"CONFIDENCE_W_{env_key.upper()}"
+        os.environ[env_key] = str(value)
+    # Clear cached settings so new env vars are picked up
+    from haftung_ai.config.settings import get_settings
+    get_settings.cache_clear()
+
+
+def _clear_weight_override(weight_override: dict[str, float] | None) -> None:
+    """Remove weight override env vars and reset settings cache."""
+    if not weight_override:
+        return
+    for key in weight_override:
+        env_key = key.upper()
+        if not env_key.startswith("CONFIDENCE_W_"):
+            env_key = f"CONFIDENCE_W_{env_key.upper()}"
+        os.environ.pop(env_key, None)
+    from haftung_ai.config.settings import get_settings
+    get_settings.cache_clear()
 
 
 def load_ground_truth(accident_dir: Path) -> dict[str, Any]:
@@ -66,6 +97,7 @@ def run_single(
         "contributing_factors": result.get("contributing_factors", []),
         "claims": result.get("claims", []),
         "confidence": result.get("confidence_score"),
+        "validation_details": result.get("validation_details"),
         "retrieved_chunks": result.get("retrieved_chunks", []),
         "retrieval_latency_s": result.get("retrieval_latency_s"),
         "errors": result.get("errors", []),
@@ -113,6 +145,7 @@ def run_single_text(
         "contributing_factors": result.get("contributing_factors", []),
         "claims": result.get("claims", []),
         "confidence": result.get("confidence_score"),
+        "validation_details": result.get("validation_details"),
         "retrieved_chunks": result.get("retrieved_chunks", []),
         "retrieval_latency_s": result.get("retrieval_latency_s"),
         "errors": result.get("errors", []),
@@ -173,6 +206,7 @@ def run_text_experiment(
     scenarios_dir: Path,
     variant: str,
     output_dir: Path | None = None,
+    weight_override: dict[str, float] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     """Run a variant against all text scenarios.
 
@@ -180,10 +214,14 @@ def run_text_experiment(
         scenarios_dir: Path to evaluation/dataset/scenarios/.
         variant: System variant (S1, S2, S3).
         output_dir: Where to save results JSON. Defaults to evaluation/results/.
+        weight_override: Optional dict of confidence weight overrides
+            (e.g. {"CONFIDENCE_W_LLM": 0.5, "CONFIDENCE_W_COVERAGE": 0.3, "CONFIDENCE_W_BASE": 0.2}).
 
     Returns:
         Tuple of (predictions, ground_truths, scenarios).
     """
+    _apply_weight_override(weight_override)
+
     if output_dir is None:
         output_dir = Path(__file__).resolve().parents[1] / "results"
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -218,6 +256,8 @@ def run_text_experiment(
     scenarios_path = output_dir / f"{variant}_text_scenarios.json"
     with open(scenarios_path, "w") as f:
         json.dump(scenarios, f, indent=2, default=str)
+
+    _clear_weight_override(weight_override)
 
     logger.info("Saved text results to %s", result_path)
     return predictions, ground_truths, scenarios

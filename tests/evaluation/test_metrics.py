@@ -198,11 +198,14 @@ def test_aggregate_basic():
         }
     ]
     result = aggregate_metrics(preds, gts)
-    assert "causation_accuracy" in result
+    assert "causation_accuracy_fuzzy" in result
+    assert "causation_accuracy_taxonomy" in result
     assert "factors_f1" in result
     assert "hallucination_rate" in result
     assert "ece" in result
     assert "brier_score" in result
+    assert "_metric_notes" in result
+    assert "_synthetic_data_notice" in result
 
 
 def test_aggregate_with_reruns():

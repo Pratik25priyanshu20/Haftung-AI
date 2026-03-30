@@ -14,11 +14,11 @@ from haftung_ai.llm.prompts import (
 
 def test_system_prompt_exists():
     assert len(CAUSATION_SYSTEM_PROMPT) > 50
-    assert "Unfallanalytiker" in CAUSATION_SYSTEM_PROMPT
+    assert "accident analyst" in CAUSATION_SYSTEM_PROMPT
 
 
 def test_s1_prompt_no_legal():
-    assert "Kein Zugang" in CAUSATION_S1_PROMPT
+    assert "No access to legal references" in CAUSATION_S1_PROMPT
     assert "{scene_description}" in CAUSATION_S1_PROMPT
 
 
@@ -29,12 +29,12 @@ def test_s2_prompt_contains_legal():
 
 def test_s3_prompt_contains_evidence():
     assert "{evidence_summary}" in CAUSATION_S3_PROMPT
-    assert "Behauptung" in CAUSATION_S3_PROMPT
+    assert "claim" in CAUSATION_S3_PROMPT
 
 
 def test_evidence_prompt():
     assert len(EVIDENCE_EXTRACTION_PROMPT) > 50
-    assert "Beweisextraktion" in EVIDENCE_EXTRACTION_PROMPT
+    assert "evidence extraction" in EVIDENCE_EXTRACTION_PROMPT
 
 
 def test_contradiction_prompt():
@@ -43,12 +43,12 @@ def test_contradiction_prompt():
 
 
 def test_report_prompt():
-    assert "Unfallbericht" in REPORT_GENERATION_PROMPT
-    assert "Unfallhergang" in REPORT_GENERATION_PROMPT
+    assert "accident report" in REPORT_GENERATION_PROMPT
+    assert "Accident Sequence" in REPORT_GENERATION_PROMPT
 
 
 def test_report_system_prompt():
-    assert "Sachverständiger" in REPORT_SYSTEM_PROMPT
+    assert "technical expert" in REPORT_SYSTEM_PROMPT
 
 
 def test_validation_prompt():

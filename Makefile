@@ -1,6 +1,7 @@
 .PHONY: install dev lint format typecheck test test-unit test-integration test-eval test-all \
        serve ui demo docker-up docker-down ingest eval eval-stability clean \
-       eval-text eval-text-all eval-text-stability eval-tables create-text-scenarios
+       eval-text eval-text-all eval-text-stability eval-tables create-text-scenarios \
+       eval-judge-variance eval-weight-ablation
 
 # ─── Setup ──────────────────────────────────────────────────────────────
 install:
@@ -105,6 +106,13 @@ eval-tables:
 	python evaluation/analysis/statistical_tests.py --results $(RESULTS) --text
 	python evaluation/analysis/results_table.py --results $(RESULTS) --text
 	python evaluation/analysis/plot_results.py --results $(RESULTS) --text
+
+# ─── Judge Variance & Weight Ablation ──────────────────────────────────
+eval-judge-variance:
+	python evaluation/runners/run_judge_variance.py --scenarios $(SCENARIOS) --variant S2 --n-runs 5 --output $(RESULTS)
+
+eval-weight-ablation:
+	python evaluation/runners/run_weight_ablation.py --scenarios $(SCENARIOS) --output $(RESULTS)
 
 # ─── Dataset ────────────────────────────────────────────────────────────
 create-dataset:

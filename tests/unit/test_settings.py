@@ -6,7 +6,7 @@ from haftung_ai.config.settings import Settings, get_settings
 
 class TestSettings:
     def test_default_values(self):
-        settings = Settings()
+        settings = Settings(_env_file=None)
         assert settings.APP_NAME == "Haftung_AI"
         assert settings.GROQ_MODEL == "llama-3.3-70b-versatile"
         assert settings.QDRANT_URL == "http://localhost:6333"
